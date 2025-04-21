@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e67b0a0d6eb2f439cf835d1d1a5bc0, type: 3}
+  m_Name: RefeicaoBasica
+  m_EditorClassIdentifier: 
+  mineralName: Refeicao Basica
+  mineralPrefab: {fileID: 1498510798734215029, guid: 2b0ae314c81eb37438ba16d849bc579a, type: 3}
+  iconImage: {fileID: 0}
+  isTool: 0
+  toolData: {fileID: 0}
+  dropQuantity: 0
+  mineralID: 21
+  requiredMaterials:
+  - materialName: Agua
+    cost: 1
+  - materialName: Ginger
+    cost: 1
+  - materialName: Erbs
+    cost: 1

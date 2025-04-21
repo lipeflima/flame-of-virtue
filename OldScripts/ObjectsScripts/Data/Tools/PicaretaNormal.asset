@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5070ecde18141844895431023ab2ee5e, type: 3}
+  m_Name: PicaretaNormal
+  m_EditorClassIdentifier: 
+  durability: 500
+  status: Normal
+  toolName: Picareta
+  toolType: Picareta
+  toolPrefab: {fileID: 6828137082822454176, guid: 7d00ef63990d0a34ca780e19551630ea, type: 3}
+  toolUI: {fileID: 5549525469413604557, guid: 1d5e31503b6a0254995ec466883f136c, type: 3}
+  toolIcon: {fileID: 21300000, guid: b54b94da5cee5c046bf327246ac181e6, type: 3}
