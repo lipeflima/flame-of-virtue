@@ -7,16 +7,19 @@ public class EnergySystem : MonoBehaviour
     public float maxEnergy = 100f;
     public float currentEnergy;
     private float energyDrainRate = 100f / 300f; // 100 unidades em 5 min (300 segundos)
-
+    private bool alive;
 
     void Start()
     {
         currentEnergy = maxEnergy;
+        alive = true;
     }
 
     void Update()
     {
         // Reduz energia com o tempo
+        if(currentEnergy <= 0) return;
+
         currentEnergy -= energyDrainRate * Time.deltaTime;
         currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
 
@@ -54,5 +57,9 @@ public class EnergySystem : MonoBehaviour
         currentEnergy -= amount;
         currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
         gameObject.GetComponent<DamageIndicator>().MostrarIndicadorDeDano(amount);
+    }
+    public bool GetLifeStatus()
+    {
+        return alive;
     }
 }
