@@ -7,21 +7,152 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _playerRigidbody2D;
     [SerializeField] private float _playerSpeed;
     private Vector2 _playerDirection;
-    
-    void Start()
+    [SerializeField] private GameObject model;
+    private EnergySystem energySystem;
+    private Animator anim;
+    public PlayerStates playerStates;
+
+    private string currentAnimState = "";
+    private bool isFacingRight = true;
+
+    // Knockback e dano temporizado
+    private Vector2 externalForce;
+    private float externalForceTimer = 0f;
+    [SerializeField] private float externalForceDuration = 0.3f;
+
+    private float damagedTimer = 0f;
+    [SerializeField] private float damagedDuration = 0.5f;
+
+    public enum PlayerStates
     {
-        _playerRigidbody2D = GetComponent<Rigidbody2D>();   
+        Idle,
+        Moving,
+        Damaged,
+        Dead
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        _playerRigidbody2D = GetComponent<Rigidbody2D>();
+        anim = model.GetComponent<Animator>();
+        energySystem = GetComponent<EnergySystem>();
+        playerStates = PlayerStates.Idle;
+    }
+
     void Update()
+    {
+        HandleInput();
+    }
+
+    void FixedUpdate()
+    {
+        UpdateTimers();
+        UpdatePlayerState();
+        UpdateAnimation();
+
+        if (CanMove())
+        {
+            SetMovement();
+        }
+
+        if (externalForceTimer > 0f)
+        {
+            ApplyForce();
+        }
+    }
+
+    private void HandleInput()
     {
         _playerDirection.x = Input.GetAxisRaw("Horizontal");
         _playerDirection.y = Input.GetAxisRaw("Vertical");
     }
 
-    void FixedUpdate()
+    private void UpdatePlayerState()
     {
+        if (!energySystem.GetLifeStatus())
+            playerStates = PlayerStates.Dead;
+        else if (damagedTimer > 0f)
+            playerStates = PlayerStates.Damaged;
+        else if (_playerDirection != Vector2.zero)
+            playerStates = PlayerStates.Moving;
+        else
+            playerStates = PlayerStates.Idle;
+    }
+
+    private void UpdateAnimation()
+    {
+        switch (playerStates)
+        {
+            case PlayerStates.Idle:
+                SetAnimationState("Idle");
+                break;
+            case PlayerStates.Moving:
+                SetAnimationState("Moving");
+                break;
+            case PlayerStates.Damaged:
+                SetAnimationState("Damaged");
+                break;
+            case PlayerStates.Dead:
+                SetAnimationState("Dead");
+                break;
+        }
+    }
+
+    private void SetAnimationState(string newState)
+    {
+        if (currentAnimState == newState) return;
+
+        if (!string.IsNullOrEmpty(currentAnimState))
+            anim.SetBool(currentAnimState, false);
+
+        anim.SetBool(newState, true);
+        currentAnimState = newState;
+    }
+
+    private void SetMovement()
+    {
+        // Vira o personagem conforme a direção
+        if (_playerDirection.x > 0 && !isFacingRight)
+            Flip();
+        else if (_playerDirection.x < 0 && isFacingRight)
+            Flip();
+
         _playerRigidbody2D.MovePosition(_playerRigidbody2D.position + _playerSpeed * Time.fixedDeltaTime * _playerDirection.normalized);
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 scale = model.transform.localScale;
+        scale.x *= -1;
+        model.transform.localScale = scale;
+    }
+
+    private bool CanMove()
+    {
+        return playerStates == PlayerStates.Idle || playerStates == PlayerStates.Moving;
+    }
+
+    public void ApplyExternalForce(Vector2 force)
+    {
+        externalForce = force;
+        externalForceTimer = externalForceDuration;
+        damagedTimer = damagedDuration;
+        playerStates = PlayerStates.Damaged;
+    }
+
+    private void ApplyForce()
+    {
+        _playerRigidbody2D.MovePosition(_playerRigidbody2D.position + externalForce * Time.fixedDeltaTime);
+        externalForce = Vector2.Lerp(externalForce, Vector2.zero, 5f * Time.fixedDeltaTime);
+    }
+
+    private void UpdateTimers()
+    {
+        if (damagedTimer > 0f)
+            damagedTimer -= Time.fixedDeltaTime;
+
+        if (externalForceTimer > 0f)
+            externalForceTimer -= Time.fixedDeltaTime;
     }
 }
