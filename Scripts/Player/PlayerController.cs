@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public PlayerStates playerStates;
 
     private string currentAnimState = "";
+    private bool isFacingRight = true;
 
     // Knockback e dano temporizado
     private Vector2 externalForce;
@@ -110,7 +111,21 @@ public class PlayerController : MonoBehaviour
 
     private void SetMovement()
     {
+        // Vira o personagem conforme a direção
+        if (_playerDirection.x > 0 && !isFacingRight)
+            Flip();
+        else if (_playerDirection.x < 0 && isFacingRight)
+            Flip();
+
         _playerRigidbody2D.MovePosition(_playerRigidbody2D.position + _playerSpeed * Time.fixedDeltaTime * _playerDirection.normalized);
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 scale = model.transform.localScale;
+        scale.x *= -1;
+        model.transform.localScale = scale;
     }
 
     private bool CanMove()

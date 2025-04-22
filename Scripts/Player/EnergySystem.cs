@@ -18,7 +18,11 @@ public class EnergySystem : MonoBehaviour
     void Update()
     {
         // Reduz energia com o tempo
-        if(currentEnergy <= 0) return;
+        if(currentEnergy <= 0) 
+        {
+            alive = false;
+            return;
+        }
 
         currentEnergy -= energyDrainRate * Time.deltaTime;
         currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
