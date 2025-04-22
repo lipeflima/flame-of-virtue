@@ -7,7 +7,7 @@ public class EnergySystem : MonoBehaviour
     public float maxEnergy = 100f;
     public float currentEnergy;
     private float energyDrainRate = 100f / 300f; // 100 unidades em 5 min (300 segundos)
-    private bool alive;
+    private bool alive, damaged;
 
     void Start()
     {
@@ -61,5 +61,9 @@ public class EnergySystem : MonoBehaviour
     public bool GetLifeStatus()
     {
         return alive;
+    }
+    public bool GetDamagedStatus()
+    {
+        return damaged;
     }
 }
