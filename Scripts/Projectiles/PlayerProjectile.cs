@@ -14,8 +14,9 @@ public class PlayerProjectile : MonoBehaviour
             colidiu = true;
             EnemyHP enemy = collision.gameObject.GetComponent<EnemyHP>();
             enemy.TakeDamage(damage);
+            Debug.Log("Hit Enemy!");
         }
-
+        
         Destroy(gameObject);
     }
 }

@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
                 weaponControll.StopShoot();
             }
 
-            SetRotation();
+            //SetRotation();
         }            
     }
 

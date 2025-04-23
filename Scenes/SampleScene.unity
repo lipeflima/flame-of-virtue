@@ -4479,7 +4479,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 83.32259, y: -64.6407, z: -24.422796}
+  m_LocalPosition: {x: 21.222593, y: -34.1407, z: -24.422796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6153,7 +6153,7 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -776540329
+  m_SortingLayerID: 1238248155
   m_SortingLayer: -1
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -35131,7 +35131,7 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -776540329
+  m_SortingLayerID: 1238248155
   m_SortingLayer: -1
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -63760,7 +63760,7 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -776540329
+  m_SortingLayerID: 1238248155
   m_SortingLayer: -1
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -92052,9 +92052,9 @@ GameObject:
   - component: {fileID: 1043327334}
   - component: {fileID: 1043327337}
   - component: {fileID: 1043327336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hexagon Flat-Top
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92211,12 +92211,20 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.25, y: 0.43359375}
-      - {x: -0.5, y: 0}
-      - {x: -0.25, y: -0.43359375}
-      - {x: 0.25, y: -0.43359375}
-      - {x: 0.5, y: 0}
-      - {x: 0.25, y: 0.43359375}
+    - - {x: -0.059316456, y: 0.38274458}
+      - {x: -0.15568124, y: 0.17007928}
+      - {x: -0.25211126, y: -0.05720518}
+      - {x: -0.4038312, y: -0.16656704}
+      - {x: -0.39619154, y: -0.42088175}
+      - {x: -0.24759457, y: -0.4822894}
+      - {x: -0.44541913, y: -0.78715277}
+      - {x: 0.47246474, y: -0.79589343}
+      - {x: 0.35567617, y: -0.51625764}
+      - {x: 0.4600041, y: -0.40122786}
+      - {x: 0.47457483, y: -0.17161554}
+      - {x: 0.265068, y: -0.051838223}
+      - {x: 0.1558409, y: 0.17161621}
+      - {x: 0.046603248, y: 0.38274515}
   m_UseDelaunayMesh: 0
 --- !u!4 &1047938218 stripped
 Transform:
@@ -93204,7 +93212,7 @@ Transform:
   m_GameObject: {fileID: 1259982276}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 83.32259, y: -64.6407, z: -24.422796}
+  m_LocalPosition: {x: 21.222593, y: -34.1407, z: -24.422796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -95513,7 +95521,7 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -776540329
+  m_SortingLayerID: 1238248155
   m_SortingLayer: -1
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -123831,15 +123839,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 44034519699553260, guid: 20220cd2fe1da7247b06ff7c01666dfc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1246096703104144106, guid: 20220cd2fe1da7247b06ff7c01666dfc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.42913437
+      value: 61.8
       objectReference: {fileID: 0}
     - target: {fileID: 1246096703104144106, guid: 20220cd2fe1da7247b06ff7c01666dfc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5198345
+      value: -39.4
       objectReference: {fileID: 0}
     - target: {fileID: 1246096703104144106, guid: 20220cd2fe1da7247b06ff7c01666dfc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -127524,11 +127532,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7875495112857396814, guid: 5e5ee0e86f1cbab4094f0f2bb48406e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 110.6
+      value: 48.5
       objectReference: {fileID: 0}
     - target: {fileID: 7875495112857396814, guid: 5e5ee0e86f1cbab4094f0f2bb48406e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -47.8
+      value: -17.3
       objectReference: {fileID: 0}
     - target: {fileID: 7875495112857396814, guid: 5e5ee0e86f1cbab4094f0f2bb48406e7, type: 3}
       propertyPath: m_LocalPosition.z
