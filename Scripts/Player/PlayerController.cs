@@ -11,9 +11,12 @@ public class PlayerController : MonoBehaviour
     private EnergySystem energySystem;
     private Animator anim;
     public PlayerStates playerStates;
-
+    public static PlayerController Instance;
+    private PlayerWeaponControll weaponControll;
     private string currentAnimState = "";
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
+    public bool primaryShoot = false;
+    public Transform weapon, turret;
 
     // Knockback e dano temporizado
     private Vector2 externalForce;
@@ -31,12 +34,18 @@ public class PlayerController : MonoBehaviour
         Dead
     }
 
+    void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         _playerRigidbody2D = GetComponent<Rigidbody2D>();
         anim = model.GetComponent<Animator>();
         energySystem = GetComponent<EnergySystem>();
-        playerStates = PlayerStates.Idle;
+        playerStates = PlayerStates.Idle;        
+        weaponControll = GetComponent<PlayerWeaponControll>();
     }
 
     void Update()
@@ -65,18 +74,42 @@ public class PlayerController : MonoBehaviour
     {
         _playerDirection.x = Input.GetAxisRaw("Horizontal");
         _playerDirection.y = Input.GetAxisRaw("Vertical");
+        primaryShoot = Input.GetButton("Fire1");
     }
 
     private void UpdatePlayerState()
     {
         if (!energySystem.GetLifeStatus())
+        {
             playerStates = PlayerStates.Dead;
+        }
+            
         else if (damagedTimer > 0f)
+        {
             playerStates = PlayerStates.Damaged;
+        }
+            
         else if (_playerDirection != Vector2.zero)
+        {
             playerStates = PlayerStates.Moving;
+        }
+            
         else
+        {
             playerStates = PlayerStates.Idle;
+        }
+
+        if(energySystem.GetLifeStatus())
+        {
+            if(primaryShoot)
+            {
+                weaponControll.Shoot();
+            }
+            else
+            {
+                weaponControll.StopShoot();
+            }
+        }            
     }
 
     private void UpdateAnimation()
