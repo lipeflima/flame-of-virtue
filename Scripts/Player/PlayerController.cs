@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D _playerRigidbody2D;
-    [SerializeField] private float _playerSpeed;
-    private Vector2 _playerDirection;
+    [SerializeField] private float _playerSpeed, angle;
+    private Vector2 _playerDirection, mousePos;
+    private Camera cam;
     [SerializeField] private GameObject model;
     private EnergySystem energySystem;
     private Animator anim;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
         energySystem = GetComponent<EnergySystem>();
         playerStates = PlayerStates.Idle;        
         weaponControll = GetComponent<PlayerWeaponControll>();
+        cam = Camera.main;
     }
 
     void Update()
@@ -109,6 +111,8 @@ public class PlayerController : MonoBehaviour
             {
                 weaponControll.StopShoot();
             }
+
+            SetRotation();
         }            
     }
 

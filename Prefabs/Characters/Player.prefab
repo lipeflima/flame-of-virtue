@@ -128,8 +128,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.003000021, y: 0.00074994564, z: 0}
-    m_Extent: {x: 2.4185, y: 2.4275498, z: 0}
+    m_Center: {x: 0.0016499758, y: -0.0059999228, z: 0}
+    m_Extent: {x: 2.4228501, y: 2.4193, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSpeed: 10
+  angle: 0
   model: {fileID: 7446200237669261595}
   playerStates: 0
   isFacingRight: 1
@@ -446,5 +447,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
-  spawn: {fileID: 7557922594949356377}
+  spawn: {fileID: 5184545853596079563}
   wData: {fileID: 11400000, guid: 974273dcf910b554a968a4210e90d80a, type: 2}

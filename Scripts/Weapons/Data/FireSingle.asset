@@ -18,11 +18,11 @@ MonoBehaviour:
   projectileforce: 800
   projectilesToSpawn: 1
   projectileDistance: 1
-  recoilOffsetX: 1
-  recoilOffsetY: 1
+  recoilOffsetX: 0
+  recoilOffsetY: 0
   magazineSize: 30
   reloadTime: 1
-  recoilFactor: 50
+  recoilFactor: 1
   coolDownRate: 5
   triggerReleaseTime: 0.25
   spawnPoint: {x: 0, y: 0, z: 0}
