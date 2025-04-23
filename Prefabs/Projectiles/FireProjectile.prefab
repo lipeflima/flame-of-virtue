@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   lifeTime: 10
-  damage: 10
+  damage: 2
   colidiu: 0
 --- !u!1 &1469401540142677465
 GameObject:
