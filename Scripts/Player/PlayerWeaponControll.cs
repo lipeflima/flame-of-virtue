@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerWeaponControll : MonoBehaviour
 {
-    public WeaponType weaponType;
+    /* public WeaponType weaponType;
     private bool shooting;
     float nextTimeToShoot, recoverRecoilCounter;
     Vector3 shootDirection;
@@ -140,5 +140,5 @@ public class PlayerWeaponControll : MonoBehaviour
     public WeaponData GetWeaponData()
     {
         return wData;
-    }
+    } */
 }

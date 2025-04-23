@@ -5,11 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D _playerRigidbody2D;
-<<<<<<< Updated upstream
-    [SerializeField] private float _playerSpeed;
-    private Vector2 _playerDirection;
-    
-=======
     [SerializeField] private float _playerSpeed, angle;
     private Vector2 _playerDirection, mousePos;
     private Camera cam;
@@ -45,7 +40,6 @@ public class PlayerController : MonoBehaviour
         Instance = this;
     }
 
->>>>>>> Stashed changes
     void Start()
     {
         _playerRigidbody2D = GetComponent<Rigidbody2D>();   
@@ -60,10 +54,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-<<<<<<< Updated upstream
-        _playerRigidbody2D.MovePosition(_playerRigidbody2D.position + _playerSpeed * Time.fixedDeltaTime * _playerDirection.normalized);
-    }
-=======
         UpdateTimers();
         UpdatePlayerState();
         UpdateAnimation();
@@ -88,12 +78,12 @@ public class PlayerController : MonoBehaviour
 
     private void UpdatePlayerState()
     {
-        if (!energySystem.GetLifeStatus())
+        /* if (!energySystem.GetLifeStatus())
         {
             playerStates = PlayerStates.Dead;
-        }
+        } */
             
-        else if (damagedTimer > 0f)
+        if (damagedTimer > 0f)
         {
             playerStates = PlayerStates.Damaged;
         }
@@ -108,7 +98,7 @@ public class PlayerController : MonoBehaviour
             playerStates = PlayerStates.Idle;
         }
 
-        if(energySystem.GetLifeStatus())
+        /* if(energySystem.GetLifeStatus())
         {
             if(primaryShoot)
             {
@@ -120,7 +110,7 @@ public class PlayerController : MonoBehaviour
             }
 
             SetRotation();
-        }            
+        }    */         
     }
 
     private void UpdateAnimation()
@@ -218,5 +208,4 @@ public class PlayerController : MonoBehaviour
         if (externalForceTimer > 0f)
             externalForceTimer -= Time.fixedDeltaTime;
     }
->>>>>>> Stashed changes
 }
