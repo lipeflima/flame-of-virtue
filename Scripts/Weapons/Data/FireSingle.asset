@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ddcdb972607144fb65a03dd4b36b16, type: 3}
+  m_Name: FireSingle
+  m_EditorClassIdentifier: 
+  damage: 10
+  shootRate: 3
+  projectileSpeed: 25
+  projectileforce: 800
+  projectilesToSpawn: 1
+  projectileDistance: 1
+  recoilOffsetX: 1
+  recoilOffsetY: 1
+  magazineSize: 30
+  reloadTime: 1
+  recoilFactor: 50
+  coolDownRate: 5
+  triggerReleaseTime: 0.25
+  spawnPoint: {x: 0, y: 0, z: 0}
+  mfPoint: {x: 0, y: 0, z: 0}
+  projectile: {fileID: 44034519699553260, guid: 20220cd2fe1da7247b06ff7c01666dfc, type: 3}
+  muzzleFlash: {fileID: 0}
+  bulletCapsulePrefab: {fileID: 0}
+  shootSoundPrefab: {fileID: 0}
