@@ -153,6 +153,25 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody2D.MovePosition(_playerRigidbody2D.position + _playerSpeed * Time.fixedDeltaTime * _playerDirection.normalized);
     }
 
+    public void SetRotation()
+    {
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector2 lookDir = mousePos - _playerRigidbody2D.position;
+        angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        turret.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        if(mousePos.x < transform.position.x && isFacingRight)
+        {
+            Flip();
+        }
+
+        if(mousePos.x > transform.position.x && !isFacingRight)
+        {
+            Flip();
+        }
+    }
+
     private void Flip()
     {
         isFacingRight = !isFacingRight;
