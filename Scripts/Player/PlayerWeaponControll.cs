@@ -29,11 +29,11 @@ public class PlayerWeaponControll : MonoBehaviour
     {
         if (shooting)
         {
-            //SetRecoil(true);
+            SetRecoil(true);
         }
         else
         {
-            //SetRecoil(false);
+            SetRecoil(false);
         }
 
         //CheckTriggerRelease();
@@ -121,7 +121,7 @@ public class PlayerWeaponControll : MonoBehaviour
         //if(shooting) startTriggerRelease = true;
 
         shooting = false;
-        //SetRecoil(false);
+        SetRecoil(false);
     }
 
     void SetRecoil(bool status)

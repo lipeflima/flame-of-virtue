@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _playerSpeed, angle;
     private Vector2 _playerDirection, mousePos;
     private Camera cam;
-    [SerializeField] private GameObject model, flipModel;
+    [SerializeField] private GameObject model;
     private EnergySystem energySystem;
     private Animator anim;
     public PlayerStates playerStates;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     // Knockback e dano temporizado
     private Vector2 externalForce;
-    private float externalForceTimer = 0f, nDir;
+    private float externalForceTimer = 0f;
     [SerializeField] private float externalForceDuration = 0.3f;
 
     private float damagedTimer = 0f;
@@ -149,10 +149,10 @@ public class PlayerController : MonoBehaviour
     private void SetMovement()
     {
         // Vira o personagem conforme a direção
-        if (_playerDirection.x > 0 && !isFacingRight);
-            //Flip();
-        else if (_playerDirection.x < 0 && isFacingRight);
-            //Flip();
+        if (_playerDirection.x > 0 && !isFacingRight)
+            Flip();
+        else if (_playerDirection.x < 0 && isFacingRight)
+            Flip();
 
         _playerRigidbody2D.MovePosition(_playerRigidbody2D.position + _playerSpeed * Time.fixedDeltaTime * _playerDirection.normalized);
     }
@@ -175,29 +175,13 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
     }
-    /*
+
     private void Flip()
     {
         isFacingRight = !isFacingRight;
         Vector3 scale = model.transform.localScale;
         scale.x *= -1;
         model.transform.localScale = scale;
-    }*/
-
-    public void Flip() 
-    {
-        if (isFacingRight)
-        {
-            isFacingRight = false;
-            nDir = -1;
-        }
-        else
-        {
-            isFacingRight = true;
-            nDir = 1;
-        }
-
-        flipModel.transform.localScale = new Vector3(-flipModel.transform.localScale.x, flipModel.transform.localScale.y, flipModel.transform.localScale.z);
     }
 
     private bool CanMove()

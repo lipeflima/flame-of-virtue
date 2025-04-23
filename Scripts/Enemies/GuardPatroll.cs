@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GuardPatroll : MonoBehaviour
 {
-    public float health = 30f;
 
     public float baseSpeed = 2f;
     private float moveSpeed;
@@ -118,18 +117,12 @@ public class GuardPatroll : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float amount)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        health -= amount;
-
-        if (health <= 0)
+        if (collision.CompareTag("PlayerAttack"))
         {
-            Die();
+            EnemyHP enemy = GetComponent<EnemyHP>();
+            enemy.TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
         }
-    }
-
-    private void Die()
-    {
-        Destroy(gameObject);
     }
 }

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1246096703104144106}
   - component: {fileID: 1421150610448920051}
   - component: {fileID: 1554746690102941754}
+  - component: {fileID: -4139048382694081335}
   m_Layer: 6
   m_Name: FireProjectile
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +110,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.27447516}
   m_EdgeRadius: 0
+--- !u!114 &-4139048382694081335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44034519699553260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009979d72378a7748a939e3f6072d88a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  lifeTime: 10
+  damage: 10
+  colidiu: 0
 --- !u!1 &1469401540142677465
 GameObject:
   m_ObjectHideFlags: 0
