@@ -121,4 +121,13 @@ public class Dasher : MonoBehaviour
             colidido = false;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerAttack"))
+        {
+            EnemyHP enemy = GetComponent<EnemyHP>();
+            enemy.TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
+        }
+    }
 }

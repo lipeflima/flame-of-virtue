@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GuardPatroll : MonoBehaviour
 {
-    public float health = 30f;
 
     public float baseSpeed = 2f;
     private float moveSpeed;
@@ -155,4 +154,16 @@ public class GuardPatroll : MonoBehaviour
             patrolDirection = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)).normalized;
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerAttack"))
+        {
+            EnemyHP enemy = GetComponent<EnemyHP>();
+            enemy.TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
+        }
+    }
+>>>>>>> Stashed changes
 }

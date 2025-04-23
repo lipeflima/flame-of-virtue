@@ -195,4 +195,13 @@ public class RangedEnemy : MonoBehaviour
         Gizmos.DrawRay(transform.position, rightLimit);
         Gizmos.DrawRay(transform.position, leftLimit);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerAttack"))
+        {
+            EnemyHP enemy = GetComponent<EnemyHP>();
+            enemy.TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
+        }
+    }
 }
