@@ -44,7 +44,7 @@ public class GuardPatroll : MonoBehaviour
 
         if (distanceToPlayer <= detectionRange && Time.time >= nextDashTime)
         {
-            StartCoroutine(Dash());
+            // StartCoroutine(Dash());
             nextDashTime = Time.time + dashCooldown;
         }
 
@@ -59,36 +59,6 @@ public class GuardPatroll : MonoBehaviour
         }
 
         AvoidOtherEnemies();
-    }
-
-    // Corrutina da investida
-    private IEnumerator Dash()
-    {
-        isDashing = true;
-        dashTimer = dashDuration;
-
-        Vector2 dashDirection = (player.transform.position - transform.position).normalized;
-        rb.velocity = dashDirection * dashSpeed;
-
-        yield return new WaitForSeconds(dashDuration);
-
-        rb.velocity = Vector2.zero;
-        isDashing = false;
-    }
-
-    public void TakeDamage(float amount)
-    {
-        health -= amount;
-
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -154,8 +124,6 @@ public class GuardPatroll : MonoBehaviour
             patrolDirection = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)).normalized;
         }
     }
-<<<<<<< Updated upstream
-=======
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -165,5 +133,4 @@ public class GuardPatroll : MonoBehaviour
             enemy.TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
         }
     }
->>>>>>> Stashed changes
 }
