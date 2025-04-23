@@ -17,8 +17,6 @@ public class GuardPatroll : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     private bool isDashing = false;
-    private float dashTimer;
-    private float nextDashTime;
 
     // Patrulha
     private bool isPatrolling = false;
@@ -43,12 +41,6 @@ public class GuardPatroll : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
 
-        if (distanceToPlayer <= detectionRange && Time.time >= nextDashTime)
-        {
-            StartCoroutine(Dash());
-            nextDashTime = Time.time + dashCooldown;
-        }
-
         if (!isDashing && distanceToPlayer <= detectionRange)
         {
             Vector2 direction = (player.transform.position - transform.position).normalized;
@@ -60,36 +52,6 @@ public class GuardPatroll : MonoBehaviour
         }
 
         AvoidOtherEnemies();
-    }
-
-    // Corrutina da investida
-    private IEnumerator Dash()
-    {
-        isDashing = true;
-        dashTimer = dashDuration;
-
-        Vector2 dashDirection = (player.transform.position - transform.position).normalized;
-        rb.velocity = dashDirection * dashSpeed;
-
-        yield return new WaitForSeconds(dashDuration);
-
-        rb.velocity = Vector2.zero;
-        isDashing = false;
-    }
-
-    public void TakeDamage(float amount)
-    {
-        health -= amount;
-
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -154,5 +116,20 @@ public class GuardPatroll : MonoBehaviour
             float angle = Random.Range(0f, 360f);
             patrolDirection = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)).normalized;
         }
+    }
+
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
