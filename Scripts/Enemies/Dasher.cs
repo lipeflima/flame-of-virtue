@@ -27,6 +27,7 @@ public class Dasher : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Color originalColor;
     [SerializeField] private Color rageColor = new Color(1f, 0.3f, 0.3f);
+    
 
     void Start()
     {

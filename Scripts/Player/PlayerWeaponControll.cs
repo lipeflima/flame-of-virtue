@@ -59,13 +59,13 @@ public class PlayerWeaponControll : MonoBehaviour
     }
 
     void FireWeapon()
-    {
+    {        
         for (int i = 0; i < wData.projectilesToSpawn; i++)
         {
             GameObject projectile = Instantiate(wData.projectile, spawn.transform.position + wData.spawnPoint + new Vector3(Random.Range(-wData.recoilOffsetX, wData.recoilOffsetX), Random.Range(-wData.recoilOffsetX, wData.recoilOffsetX), 0), spawn.rotation * Quaternion.Euler(0, 0, Random.Range(-wData.recoilOffsetY, wData.recoilOffsetY)));
             //GameObject projectile = Instantiate(wData.projectile, spawn.transform.position, spawn.transform.rotation);            
             model = projectile.transform;
-
+            Debug.Log("Fire Weapon!");
             //ammo -= 1;
             //ammoBar.value = ammo;
             

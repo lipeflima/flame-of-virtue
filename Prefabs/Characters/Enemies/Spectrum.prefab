@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5174975635973986042}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -182,6 +182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
+  itemDrops: []
+  dropChance: 0.25
 --- !u!114 &5901789814560118992
 MonoBehaviour:
   m_ObjectHideFlags: 0
