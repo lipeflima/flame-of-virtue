@@ -29,11 +29,11 @@ public class PlayerWeaponControll : MonoBehaviour
     {
         if (shooting)
         {
-            SetRecoil(true);
+            //SetRecoil(true);
         }
         else
         {
-            SetRecoil(false);
+            //SetRecoil(false);
         }
 
         //CheckTriggerRelease();
@@ -88,8 +88,8 @@ public class PlayerWeaponControll : MonoBehaviour
                 }
             }
 
-            projectile.GetComponent<Rigidbody2D>().AddForce(shootDirection * wData.projectileSpeed, ForceMode2D.Impulse);
-            Destroy(projectile, wData.projectileSpeed * wData.projectileDistance * Time.deltaTime);
+            //projectile.GetComponent<Rigidbody2D>().AddForce(shootDirection * wData.projectileSpeed, ForceMode2D.Impulse);
+            //Destroy(projectile, wData.projectileSpeed * wData.projectileDistance * Time.deltaTime);
 
             if (i == 0)
             {
@@ -121,7 +121,7 @@ public class PlayerWeaponControll : MonoBehaviour
         //if(shooting) startTriggerRelease = true;
 
         shooting = false;
-        SetRecoil(false);
+        //SetRecoil(false);
     }
 
     void SetRecoil(bool status)
