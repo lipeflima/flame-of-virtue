@@ -23,6 +23,11 @@ public class TheJudgeBoss : MonoBehaviour
     public float dashCooldown = 3f;
     private float dashTimer;
     private bool isDashing = false;
+    public float dashTime = 2f;
+    public GameObject minionPrefab;
+    public Transform[] spawnPoints;
+    public float invokeCooldown = 10f;
+    private float invokeTimer;
 
     // Fase 3
     public GameObject explosionEffect;
@@ -100,13 +105,28 @@ public class TheJudgeBoss : MonoBehaviour
         proj.GetComponent<JudgeProjectile>().Initialize(direction);
     }
 
+    void FirePenitenceProjectile()
+    {
+        Vector2 direction = (player.position - transform.position).normalized;
+        GameObject proj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+    }
+
     void Phase2_Behavior()
     {
+        Phase1_Behavior();
         dashTimer += Time.deltaTime;
+        invokeTimer += Time.deltaTime;
+
         if (!isDashing && dashTimer >= dashCooldown)
         {
             StartCoroutine(DashAtPlayer());
             dashTimer = 0;
+        }
+
+        if (invokeTimer >= invokeCooldown)
+        {
+            SummonMinions();
+            invokeTimer = 0;
         }
     }
 
@@ -114,7 +134,6 @@ public class TheJudgeBoss : MonoBehaviour
     {
         isDashing = true;
         Vector2 direction = (player.position - transform.position).normalized;
-        float dashTime = 0.3f;
 
         float elapsed = 0;
         while (elapsed < dashTime)
@@ -153,6 +172,16 @@ public class TheJudgeBoss : MonoBehaviour
         yield return new WaitForSeconds(2f); // tempo de transição
         currentPhase = newPhase;
         isTransitioning = false;
+    }
+
+    void SummonMinions()
+    {
+        foreach (Transform point in spawnPoints)
+        {
+            Instantiate(minionPrefab, point.position, Quaternion.identity);
+        }
+
+        // anim.SetTrigger("Summon");
     }
 
     public void TakeDamage(float amount)
