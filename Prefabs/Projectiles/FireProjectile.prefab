@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4139048382694081335}
   - component: {fileID: 1840759516029834413}
   - component: {fileID: 251148053655010019}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: FireProjectile
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 7451626045663071029}
   - component: {fileID: 5645837425546019988}
   - component: {fileID: 5396582500257059247}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: New Piskel (26)_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
