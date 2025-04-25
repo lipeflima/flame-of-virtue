@@ -4,78 +4,107 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-using UnityEngine.Rendering.PostProcessing;
+
 public class MenuMain : MonoBehaviour
 {
     float temp = 0;
+    public float waitTime = 4;
+    public bool pressToStart = false;
+    bool pressed;
     Scene scene;
-    public string currentLevel = "Acampamento";
-    public GameObject loading;
+    public string currentLevel, levelToChange;
+    public int cLevel = 1;
+    public GameObject loading, effect, menuUI, pressUI;
     public Slider slider;
     public Text progressText;
     public UnityEvent OnMainMenu;
-    GameManager manager;
-    public static MenuMain Instance;
-    public PostProcessVolume postProcessVolume;
-    public PostProcessProfile profile;
-    public float transitionDuration = 1f;
-    public string nextSceneName;
-
-    private LensDistortion lensDistortion;
-    private Coroutine transitionCoroutine;
-    private void Awake()
+    //SaveData saveData;
+    //LevelManager levelManager;
+    public AudioSource startSound;
+    void Start()
     {
-        if(Instance != null)
+        //saveData = SaveData.Instance;
+        //levelManager = LevelManager.Instance;
+        CheckLevel();
+    }
+    private void Update()
+    {
+        if (pressToStart && !pressed)
         {
-            //Destroy(gameObject);
-        }
-        else 
-        {
-            Instance = this;
+            if (Input.GetButtonDown("Submit") || Input.GetButton("Primary Shoot"))
+            {
+                pressed = true;
+                menuUI.SetActive(true);
+                startSound.Play();
+                pressUI.SetActive(false);
+            }
         }
         
     }
-    void Start()
+    void CheckLevel()
     {
-        manager = GameManager.Instance;   
-        if (profile.TryGetSettings(out lensDistortion))
+        try 
         {
-            lensDistortion.intensity.value = 0f;
+            //saveData.GetInt("currentLevel");
         }
-        else
+        catch
         {
-            Debug.LogError("LensDistortion not found in the PostProcessVolume profile.");
-        }     
+            //currentLevel = "Level1";
+        }
+        
+        /* switch(saveData.GetInt("currentLevel"))
+        {
+            case 0:
+            
+            break;
+        } */
     }
     public void GoToLevel(string levelID)
     {
         StartCoroutine(LoadAsynchronously(levelID));
     }
-    public void GoToEncounter(string levelName)
-    {  
-        StartSceneTransition(levelName);
-    }
-    public void GoToLevelBeforeEncounter()
+    public void GoToLevelWithLoading(string levelID)
     {
-        string levelToGo = PlayerPrefs.GetString("LevelBeforeEncounter");
-        StartCoroutine(LoadAsynchronously(levelToGo));        
+        Invoke("ChangeLevel", waitTime);
+        loading.SetActive(true);
+        levelToChange = levelID;
+    }
+    void ChangeLevel()
+    {
+        GoToLevel(levelToChange);
+    }
+    public void GoToLevel(int level)
+    {
+        SceneManager.LoadScene("Level" + "" + level.ToString());
+    }
+    public void GoToMenu(string levelName)
+    {
+        SceneManager.LoadScene("Level" + levelName);
     }
     public void LoadLevel()
     {
-        currentLevel = PlayerPrefs.GetString("CurrentLevelName", "Acampamento");
-
-        if (currentLevel == "CombateSystemScene" || currentLevel == "CombateEnd" || currentLevel == "Menu" || currentLevel == null || currentLevel == "")
-            currentLevel = "Acampamento";
-
-        StartCoroutine(LoadAsynchronously(currentLevel));
+        //StartCoroutine(LoadAsynchronously("Level" + "" + saveData.GetInt("currentLevel").ToString()));
+    }
+    public void NextLevel()
+    {
+        //int nextLevel = levelManager.GetLevel() + 1;
+        //StartCoroutine(LoadAsynchronously("Level" + "" + nextLevel.ToString()));
+    }
+    public void NewGame()
+    {
+        //saveData.SetInt("currentLevel", 1);
+    }
+    public void SaveLevel()
+    {
+        //levelManager.SaveLevel();
     }
     public void RestartLevel()
     {
-        StartCoroutine(LoadAsynchronously(currentLevel));
+        //int cLevel = levelManager.GetLevel();
+        StartCoroutine(LoadAsynchronously("Level" + "" + cLevel.ToString()));
     }
     IEnumerator LoadAsynchronously(string levelName)
     {
-        Debug.Log(levelName);
         AsyncOperation operation = SceneManager.LoadSceneAsync(levelName);
 
         loading.SetActive(true);
@@ -93,54 +122,18 @@ public class MenuMain : MonoBehaviour
             yield return null;
         }
     }
-    public void Unpause()
+    public void SpawnEffect()
     {
-        manager.Unpause();
+        Instantiate(effect, Vector3.zero, Quaternion.identity);
     }
+
+    public void RestoreTimeScale()
+    {
+        Time.timeScale = 1.0f;
+    }
+
     public void QuitGame()
     {
         Application.Quit();
-    }
-    public void StartSceneTransition(string levelName)
-    {
-        if (transitionCoroutine == null)
-        {
-            transitionCoroutine = StartCoroutine(TransitionEffect(levelName));
-        }
-    }
-
-    private IEnumerator TransitionEffect(string levelName)
-    {
-        float elapsedTime = 0f;
-
-        // Gradually increase the intensity of LensDistortion
-        while (elapsedTime < transitionDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / transitionDuration;
-            lensDistortion.intensity.value = Mathf.Lerp(-30f, -100f, t);
-            yield return null;
-        }
-
-        lensDistortion.intensity.value = -100f;
-
-        // Load the next scene
-        //SceneManager.LoadScene(nextSceneName);
-        StartCoroutine(LoadAsynchronously(levelName));
-
-        // Reset elapsed time for fading out
-        elapsedTime = 0f;
-
-        // Gradually decrease the intensity back to 0
-        while (elapsedTime < transitionDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / transitionDuration;
-            lensDistortion.intensity.value = Mathf.Lerp(-100f, 0f, t);
-            yield return null;
-        }
-
-        lensDistortion.intensity.value = 0f;
-        transitionCoroutine = null;
     }
 }

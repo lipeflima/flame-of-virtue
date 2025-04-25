@@ -14,7 +14,14 @@ public class PlayerProjectile : MonoBehaviour
             colidiu = true;
             EnemyHP enemy = collision.gameObject.GetComponent<EnemyHP>();
             enemy.TakeDamage(damage);
-            Debug.Log("Hit Enemy!");
+        }
+
+        if (collision.gameObject.CompareTag("Breakable"))
+        {
+            if(collision.gameObject.GetComponent<DamageableObject>() != null)
+            {
+                collision.gameObject.GetComponent<DamageableObject>().SetDamage(damage);
+            }
         }
         
         Destroy(gameObject);
