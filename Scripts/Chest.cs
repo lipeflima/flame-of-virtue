@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Chest : TriggerActivator
 {
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -16,7 +15,10 @@ public class Chest : TriggerActivator
         
     }
 
-    public override void OnEnter(){}
+    public override void OnEnter()
+    {
+
+    }
     public override void OnStay(){}
     public override void OnExit(){}
 }
