@@ -41,7 +41,7 @@ public class TriggerManager : MonoBehaviour
         if(sphereCollider != null) sphereCollider.isTrigger = true;
         character = Character.Instance;
         characterColector = character.GetComponent<CharacterColector>();
-        menu = MenuMain.Instance;
+        //menu = MenuMain.Instance;
         Initialize();
         // Attempt to retrieve the InputHandler from the character
         if (hasCharacterInput)
