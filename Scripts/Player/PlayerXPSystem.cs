@@ -1,33 +1,54 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerXPSystem : MonoBehaviour
+public class PlayerXP : MonoBehaviour
 {
-    public static PlayerXPSystem Instance;
-
-    public int currentXP;
     public int currentLevel = 1;
-    public int xpToNextLevel = 10;
+    public int currentXP = 0;
+    public int xpToNextLevel;
+    
+    public Image xpBarFill;
 
-    void Awake()
+    void Start()
     {
-        if (Instance == null) Instance = this;
+        xpToNextLevel = GetXPToLevel(currentLevel);
+        UpdateXPBar();
     }
 
-    public void GainXP(int amount)
+    public void AddXP(int amount)
     {
         currentXP += amount;
-        if (currentXP >= xpToNextLevel)
+
+        while (currentXP >= xpToNextLevel && currentLevel < 10)
         {
-            LevelUp();
+            currentXP -= xpToNextLevel;
+            currentLevel++;
+            xpToNextLevel = GetXPToLevel(currentLevel);
+            // UnlockSkills();
+            // Aqui você pode adicionar efeitos, som, etc.
         }
+
+        UpdateXPBar();
     }
 
-    void LevelUp()
+    public void UpdateXPBar()
     {
-        currentXP -= xpToNextLevel;
-        currentLevel++;
-        xpToNextLevel += Mathf.RoundToInt(xpToNextLevel * 0.5f); // aumenta o custo por nível
-        Debug.Log("Level Up! Novo nível: " + currentLevel);
-        // Aplique melhorias aqui, tipo aumento de stats
+        float fillAmount = (float)currentXP / xpToNextLevel;
+        xpBarFill.fillAmount = fillAmount;
     }
+
+    int GetXPToLevel(int level)
+    {
+        return Mathf.FloorToInt(100 * Mathf.Pow(level, 1.5f));
+    }
+
+    /* void UnlockSkills()
+    {
+        switch (currentLevel)
+        {
+            case 2:
+                FireBallSkill.instance.SetFireBallSkill(true);
+                break;
+        }
+    } */
 }

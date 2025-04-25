@@ -23,7 +23,7 @@ public class XPOrb : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerXPSystem.Instance.GainXP(xpAmount);
+            other.GetComponent<PlayerXP>().AddXP(xpAmount);
             Destroy(gameObject);
         }
     }
