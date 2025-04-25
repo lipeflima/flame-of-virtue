@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: db2ace490000000093e16f23e9b20d6709a1eac9
+  m_ApplyToSortingLayers: 57efb6d100000000196f1ba0
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00065016747, y: 0.0015001297, z: 0}
-    m_Extent: {x: 4.4970503, y: 4.5071, z: 0}
+    m_Center: {x: 0.000099897385, y: -0.0009498596, z: 0}
+    m_Extent: {x: 4.4971, y: 4.49155, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 665117601218480820}
   - component: {fileID: 6324619732092335155}
   - component: {fileID: 4032819905768829853}
-  - component: {fileID: 301735518667389089}
+  - component: {fileID: 8317779441191587040}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -496,7 +496,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasKey: 0
---- !u!114 &301735518667389089
+  currentGold: 0
+  goldText: {fileID: 0}
+--- !u!114 &8317779441191587040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,6 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c04e42ad3bb2c4794498223c2f8f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentXP: 0
   currentLevel: 1
-  xpToNextLevel: 10
+  currentXP: 0
+  xpToNextLevel: 0
+  xpBarFill: {fileID: 0}
