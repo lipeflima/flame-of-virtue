@@ -26,6 +26,7 @@ public class WeaponData : ScriptableObject
     public GameObject muzzleFlash;
     public GameObject bulletCapsulePrefab;
     public GameObject shootSoundPrefab;
+    public GameObject special;
 
     public enum WeaponMode
     {

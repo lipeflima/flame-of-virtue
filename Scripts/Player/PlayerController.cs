@@ -16,8 +16,9 @@ public class PlayerController : MonoBehaviour
     private PlayerWeaponControll weaponControll;
     private string currentAnimState = "";
     public bool isFacingRight = true;
-    public bool primaryShoot = false;
+    public bool primaryShoot = false, specialAttackInput = false;
     public Transform weapon, turret;
+    public ComboSystem comboSystem {get; private set;}
 
     // Knockback e dano temporizado
     private Vector2 externalForce;
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         playerStates = PlayerStates.Idle;        
         weaponControll = GetComponent<PlayerWeaponControll>();
         cam = Camera.main;
+        comboSystem = GetComponent<ComboSystem>();
     }
 
     void Update()
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
         _playerDirection.x = Input.GetAxisRaw("Horizontal");
         _playerDirection.y = Input.GetAxisRaw("Vertical");
         primaryShoot = Input.GetButton("Fire1");
+        specialAttackInput = Input.GetButton("Fire2");
     }
 
     private void UpdatePlayerState()
@@ -110,6 +113,11 @@ public class PlayerController : MonoBehaviour
             else
             {
                 weaponControll.StopShoot();
+            }
+
+            if(specialAttackInput && comboSystem.GetSpecialStatus())
+            {
+                weaponControll.ShootSpecial();
             }
 
             //SetRotation();

@@ -31,3 +31,4 @@ MonoBehaviour:
   muzzleFlash: {fileID: 0}
   bulletCapsulePrefab: {fileID: 0}
   shootSoundPrefab: {fileID: 0}
+  special: {fileID: 8192606338275051137, guid: 87b9c28e5f90467439ec4bef7c771732, type: 3}
