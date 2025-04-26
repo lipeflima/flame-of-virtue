@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         _playerDirection.x = Input.GetAxisRaw("Horizontal");
         _playerDirection.y = Input.GetAxisRaw("Vertical");
         primaryShoot = Input.GetButton("Fire1");
-        specialAttackInput = Input.GetButtonDown("Fire2");
+        specialAttackInput = Input.GetButton("Fire2");
     }
 
     private void UpdatePlayerState()

@@ -22,7 +22,7 @@ public class ComboSystem : MonoBehaviour
 
     public void AddHit(float amount)
     {
-        if(currentHit + amount <= maxHit)
+        //if(currentHit + amount <= maxHit)
         currentHit += amount; 
         
         UpdateUI();       
