@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class SpecialAttack : MonoBehaviour
 {
-    public float projectilesToSpawn;
+    public int projectilesToSpawn = 4;
     public GameObject projectile;
     public Transform spawn;
-    bool spawned;
-    float rot;
+    private bool spawned = false;
 
     void Update()
     {
-        if(!spawned)
+        if (!spawned)
         {
             spawned = true;
             SpawnProjectiles();
@@ -21,11 +20,12 @@ public class SpecialAttack : MonoBehaviour
 
     void SpawnProjectiles()
     {
-        for(int i = 0; i < projectilesToSpawn; i++)
-        {            
-            Instantiate(projectile, spawn.position, spawn.rotation);
-            spawn.rotation = Quaternion.Euler(0, 0, rot);
-            rot += 90;
+        float rot = 0f;
+        for (int i = 0; i < projectilesToSpawn; i++)
+        {
+            Quaternion rotation = Quaternion.Euler(0, 0, rot);
+            Instantiate(projectile, spawn.position, rotation);
+            rot += 360f / projectilesToSpawn;
         }
     }
 }

@@ -32,8 +32,7 @@ public class ComboSystem : MonoBehaviour
     {
         if(currentHit >= maxHit)
         {
-            canUseSpecial = true;            
-            UpdateUI();
+            canUseSpecial = true;
         }
         else
         {
@@ -49,6 +48,7 @@ public class ComboSystem : MonoBehaviour
     public void UseSpecial()
     {
         currentHit = 0;
+        UpdateUI();
     }
     
     public bool GetSpecialStatus()
