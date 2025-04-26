@@ -6,6 +6,12 @@ public class PlayerProjectile : MonoBehaviour
     public float lifeTime = 5f;
     public int damage = 3;
     public bool colidiu = false;
+    public bool canMove;
+
+    void Update()
+    {
+        if(canMove) transform.Translate(transform.right * speed * Time.deltaTime, Space.World);
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {

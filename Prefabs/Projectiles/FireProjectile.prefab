@@ -138,7 +138,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.43887958, y: 0.45374674}
   m_EdgeRadius: 0
 --- !u!1 &3796555101615611299
 GameObject:
@@ -212,7 +212,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 594534803
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 42835636, guid: d683d442a061724468c4779bab91aebd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

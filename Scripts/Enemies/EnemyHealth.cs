@@ -6,11 +6,18 @@ public class EnemyHP : MonoBehaviour
     public GameObject xpOrbPrefab;
     public GameObject[] itemDrops; 
     [Range(0f, 1f)] public float dropChance = 0.25f;
+    private PlayerController controller;
+
+    void Start()
+    {
+        controller = PlayerController.Instance;
+    }
 
     public void TakeDamage(float amount)
     {
         health -= amount;
         gameObject.GetComponent<DamageIndicator>().MostrarIndicadorDeDano(amount);
+        controller.comboSystem.AddHit(amount);
 
         if (health <= 0)
         {

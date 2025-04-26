@@ -58,6 +58,12 @@ public class PlayerWeaponControll : MonoBehaviour
         }
     }
 
+    public void ShootSpecial()
+    {
+        GameObject special = Instantiate(wData.special, transform.position, Quaternion.identity, transform);
+        controller.comboSystem.UseSpecial();
+    }
+
     void FireWeapon()
     {        
         for (int i = 0; i < wData.projectilesToSpawn; i++)
@@ -65,7 +71,6 @@ public class PlayerWeaponControll : MonoBehaviour
             GameObject projectile = Instantiate(wData.projectile, spawn.transform.position + wData.spawnPoint + new Vector3(Random.Range(-wData.recoilOffsetX, wData.recoilOffsetX), Random.Range(-wData.recoilOffsetX, wData.recoilOffsetX), 0), spawn.rotation * Quaternion.Euler(0, 0, Random.Range(-wData.recoilOffsetY, wData.recoilOffsetY)));
             //GameObject projectile = Instantiate(wData.projectile, spawn.transform.position, spawn.transform.rotation);            
             model = projectile.transform;
-            Debug.Log("Fire Weapon!");
             //ammo -= 1;
             //ammoBar.value = ammo;
             
