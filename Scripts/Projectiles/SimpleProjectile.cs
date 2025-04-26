@@ -10,13 +10,13 @@ public class SimpleProjectile : MonoBehaviour
 
     public void Initialize(Vector2 direction)
     {
-        moveDirection = direction.normalized;
+        //moveDirection = direction.normalized;
         Destroy(gameObject, lifeTime);
     }
 
     void Update()
     {
-        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
+        transform.Translate(transform.right * speed * Time.deltaTime, Space.World);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -25,6 +25,7 @@ public class SimpleProjectile : MonoBehaviour
         {
             EnergySystem energia = collision.GetComponent<EnergySystem>();
             energia.DecreaseEnergy(damage);
+            Destroy(gameObject);
         }
         else if (!collision.isTrigger)
         {

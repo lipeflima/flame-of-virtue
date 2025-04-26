@@ -14,6 +14,7 @@ public class GuardPatroll : MonoBehaviour
     public int damage = 1;
 
     private GameObject player;
+    public Transform model; // modelo visual
     private Rigidbody2D rb;
     private bool isDashing = false;
 
@@ -22,6 +23,8 @@ public class GuardPatroll : MonoBehaviour
     private float patrolTimer = 0f;
     private float patrolInterval = 0f;
     private Vector2 patrolDirection;
+
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     void Start()
     {
@@ -33,6 +36,8 @@ public class GuardPatroll : MonoBehaviour
 
     void Update()
     {
+        LookAtPlayer();
+        
         float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
         if (distanceToPlayer < 2)
@@ -62,6 +67,21 @@ public class GuardPatroll : MonoBehaviour
             {
                 playerHealth.DecreaseEnergy(damage);
             }
+        }
+    }
+
+    void LookAtPlayer()
+    {
+        if (model != null)
+        {
+            Vector3 scale = model.localScale;
+            scale.x = player.transform.position.x < transform.position.x ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+            model.localScale = scale;
+        }
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = player.transform.position.x < transform.position.x;
         }
     }
 

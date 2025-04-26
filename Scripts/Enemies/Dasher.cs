@@ -14,6 +14,8 @@ public class Dasher : MonoBehaviour
     private bool isDashing = false;
     private float dashTimer = 0f;
     private float cooldownTimer = 0f;
+    public Animator anim;
+    public Transform model; // modelo visual
 
     private enum State { Idle, Chasing, Dashing }
     private State currentState = State.Idle;
@@ -37,6 +39,8 @@ public class Dasher : MonoBehaviour
 
     void Update()
     {
+        LookAtPlayer();
+
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         if (colidido && Time.time > nextDamageTime)
@@ -87,6 +91,7 @@ public class Dasher : MonoBehaviour
                     transform.position += (Vector3)(dashDirection * dashSpeed * Time.deltaTime);
                     dashTimer -= Time.deltaTime;
                     spriteRenderer.color = rageColor;
+                    anim.SetBool("Dashing", true);
                 }
                 else
                 {
@@ -94,8 +99,24 @@ public class Dasher : MonoBehaviour
                     cooldownTimer = dashCooldown;
                     currentState = State.Chasing;
                     spriteRenderer.color = originalColor;
+                    anim.SetBool("Dashing", false);
                 }
                 break;
+        }
+    }
+
+    void LookAtPlayer()
+    {
+        if (model != null)
+        {
+            Vector3 scale = model.localScale;
+            scale.x = player.position.x < transform.position.x ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+            model.localScale = scale;
+        }
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.flipX = player.position.x < transform.position.x;
         }
     }
 
