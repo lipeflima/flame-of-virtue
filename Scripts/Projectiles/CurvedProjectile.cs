@@ -11,9 +11,11 @@ public class CurvedProjectile : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 currentDirection;
     private float timer;
+    private PlayerProjectile playerProjectile;
 
     void Start()
     {
+        playerProjectile = GetComponent<PlayerProjectile>();
         rb = GetComponent<Rigidbody2D>();
         timer = lifetime;
 
@@ -28,6 +30,7 @@ public class CurvedProjectile : MonoBehaviour
         timer -= Time.fixedDeltaTime;
         if (timer <= 0f)
         {
+            SpawnEffects();
             Destroy(gameObject);
             return;
         }
@@ -38,6 +41,7 @@ public class CurvedProjectile : MonoBehaviour
         // Checar se está suficientemente próximo do mouse
         if (Vector2.Distance(rb.position, mouseWorldPos) <= destroyDistance)
         {
+            SpawnEffects();
             Destroy(gameObject);
             return;
         }
@@ -50,5 +54,10 @@ public class CurvedProjectile : MonoBehaviour
 
         // Move o projétil
         rb.MovePosition(rb.position + currentDirection * speed * Time.fixedDeltaTime);
+    }
+
+    void SpawnEffects()
+    {
+        if(playerProjectile.hitEffect != null) Instantiate(playerProjectile.hitEffect, transform.position, transform.rotation);
     }
 }
