@@ -7,6 +7,7 @@ public class PlayerProjectile : MonoBehaviour
     public int damage = 3;
     public bool colidiu = false;
     public bool canMove;
+    public GameObject hitEffect;
 
     void Update()
     {
@@ -28,8 +29,14 @@ public class PlayerProjectile : MonoBehaviour
             {
                 collision.gameObject.GetComponent<DamageableObject>().SetDamage(damage);
             }
-        }
+        }        
         
+        SpawnEffects();
         Destroy(gameObject);
+    }
+
+    void SpawnEffects()
+    {
+        if(hitEffect != null) Instantiate(hitEffect, transform.position, transform.rotation);
     }
 }
