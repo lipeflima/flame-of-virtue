@@ -71,6 +71,7 @@ public class PlayerWeaponControll : MonoBehaviour
             GameObject projectile = Instantiate(wData.projectile, spawn.transform.position + wData.spawnPoint + new Vector3(Random.Range(-wData.recoilOffsetX, wData.recoilOffsetX), Random.Range(-wData.recoilOffsetX, wData.recoilOffsetX), 0), spawn.rotation * Quaternion.Euler(0, 0, Random.Range(-wData.recoilOffsetY, wData.recoilOffsetY)));
             //GameObject projectile = Instantiate(wData.projectile, spawn.transform.position, spawn.transform.rotation);            
             model = projectile.transform;
+            Instantiate(wData.shootSoundPrefab);
             //ammo -= 1;
             //ammoBar.value = ammo;
             
@@ -115,7 +116,7 @@ public class PlayerWeaponControll : MonoBehaviour
         //GameObject prefab = Instantiate(wData.muzzleFlash, spawn.transform.position + wData.spawnPoint, spawn.rotation);
         //prefab.transform.localScale = new Vector3(prefab.transform.localScale.x * dir, prefab.transform.localScale.y, prefab.transform.localScale.z);
         //objectPool.SpawnFromPool(wData.shootSound, spawn.transform.position, Quaternion.identity);
-        //Instantiate(wData.shootSoundPrefab);
+        
         //objectPool.SpawnFromPool(wData.bulletCapsule, spawn.transform.position, Quaternion.identity);
         //GameObject capsule = Instantiate(wData.bulletCapsulePrefab, spawn.transform.position + wData.spawnPoint, spawn.rotation);
         //capsule.GetComponent<ObjectManager>().SetParticles(wData.capsuleIndex);

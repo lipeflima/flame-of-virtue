@@ -7,6 +7,7 @@ public class EnemyHP : MonoBehaviour
     public GameObject[] itemDrops; 
     [Range(0f, 1f)] public float dropChance = 0.25f;
     private PlayerController controller;
+    public GameObject hitEffect;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class EnemyHP : MonoBehaviour
         health -= amount;
         gameObject.GetComponent<DamageIndicator>().MostrarIndicadorDeDano(amount);
         controller.comboSystem.AddHit(amount);
+        Instantiate(hitEffect, transform.position, transform.rotation);
 
         if (health <= 0)
         {
