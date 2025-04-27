@@ -11,12 +11,6 @@ public class RuneInteractable : MonoBehaviour
     public bool playerInRange = false;
     private bool isReading = false;
 
-    void Start()
-    {
-        interactionPrompt.SetActive(false);
-        storyPanel.SetActive(false);
-    }
-
     void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
