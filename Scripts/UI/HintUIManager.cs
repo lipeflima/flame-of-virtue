@@ -16,5 +16,6 @@ public class HintUIManager : MonoBehaviour
         HintWarningUI.SetActive(true);
         yield return new WaitForSeconds(tempoExibicao);
         HintWarningUI.SetActive(false);
+        Destroy(this, 1);
     }
 }
