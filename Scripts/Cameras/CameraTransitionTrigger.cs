@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -18,9 +19,21 @@ public class CameraTransitionTrigger : MonoBehaviour
     [SerializeField] private string playerTag = "Player";
 
     [Header("Reutilização")]
-    [SerializeField] private float retriggerDelay = 5f; // Tempo para poder usar novamente
+    [SerializeField] private float retriggerDelay = 5f; 
     private float retriggerTimer = 0f;
     private bool isInCooldown = false;
+
+    [Header("Fade Settings")]
+    [SerializeField] private CanvasGroup fadeCanvasGroup; // Um Canvas com imagem preta e CanvasGroup
+    [SerializeField] private float fadeDuration = 0.5f;   // Tempo do fade in e out
+    [SerializeField] private float teleportDelay = 0.2f;  // Tempo que o jogador fica preso antes e depois do teleporte
+
+    private PlayerController controller;
+
+    void Start()
+    {
+        controller = PlayerController.Instance;
+    }
 
     private void Update()
     {
@@ -30,7 +43,6 @@ public class CameraTransitionTrigger : MonoBehaviour
             if (retriggerTimer <= 0f)
             {
                 isInCooldown = false;
-                // Reativa os objetos, se desejar que retornem
                 foreach (GameObject obj in objectsToDisable)
                 {
                     if (obj != null)
@@ -46,26 +58,59 @@ public class CameraTransitionTrigger : MonoBehaviour
 
         if (other.CompareTag(playerTag))
         {
-            // Move o jogador para o ponto de saída
-            other.transform.position = exitPoint.position;
-
-            // Troca de prioridade das câmeras
-            if (cameraToDisable != null)
-                cameraToDisable.Priority = 0;
-
-            if (cameraToEnable != null)
-                cameraToEnable.Priority = 10;
-
-            // Desativa os objetos
-            foreach (GameObject obj in objectsToDisable)
-            {
-                if (obj != null)
-                    obj.SetActive(false);
-            }
-
-            // Ativa o cooldown
+            StartCoroutine(HandleTeleportSequence(other.transform));
             retriggerTimer = retriggerDelay;
             isInCooldown = true;
         }
+    }
+
+    private IEnumerator HandleTeleportSequence(Transform player)
+    {
+        controller.isTeleporting = true;
+
+        // Fade in (escurece a tela)
+        yield return StartCoroutine(Fade(1f));
+
+        // Espera um pouquinho
+        yield return new WaitForSeconds(teleportDelay);
+
+        // Move o jogador
+        player.position = exitPoint.position;
+
+        // Troca as câmeras
+        if (cameraToDisable != null)
+            cameraToDisable.Priority = 0;
+        if (cameraToEnable != null)
+            cameraToEnable.Priority = 10;
+
+        // Desativa os objetos
+        foreach (GameObject obj in objectsToDisable)
+        {
+            if (obj != null)
+                obj.SetActive(false);
+        }
+
+        // Espera um pouquinho depois do teleporte
+        yield return new WaitForSeconds(teleportDelay);
+
+        // Fade out (clareia a tela)
+        yield return StartCoroutine(Fade(0f));
+
+        controller.isTeleporting = false;
+    }
+
+    private IEnumerator Fade(float targetAlpha)
+    {
+        float startAlpha = fadeCanvasGroup.alpha;
+        float timer = 0f;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.unscaledDeltaTime;
+            fadeCanvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, timer / fadeDuration);
+            yield return null;
+        }
+
+        fadeCanvasGroup.alpha = targetAlpha;
     }
 }

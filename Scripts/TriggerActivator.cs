@@ -6,6 +6,7 @@ public class TriggerActivator : MonoBehaviour
 {
     public string checkTag;
     public GameObject interactHud;
+    public bool interactInput = false;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -20,6 +21,7 @@ public class TriggerActivator : MonoBehaviour
     {
         if(col.gameObject.CompareTag(checkTag))
         {
+            interactInput = col.gameObject.GetComponent<PlayerController>().interactInput;
             OnStay();
         }
     }
@@ -28,6 +30,7 @@ public class TriggerActivator : MonoBehaviour
     {
         if(col.gameObject.CompareTag(checkTag))
         {
+            interactInput = false;
             interactHud.SetActive(false);
             OnExit();
         }

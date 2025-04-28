@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     private PlayerWeaponControll weaponControll;
     private string currentAnimState = "";
     public bool isFacingRight = true;
-    public bool primaryShoot = false, specialAttackInput = false;
+    public bool primaryShoot = false, specialAttackInput = false, interactInput = false;
+    public bool isTeleporting = false;
     public Transform weapon, turret;
     public ComboSystem comboSystem {get; private set;}
 
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
         UpdatePlayerState();
         UpdateAnimation();
 
-        if (CanMove())
+        if (CanMove() && !isTeleporting)
         {
             SetMovement();
         }
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
         _playerDirection.y = Input.GetAxisRaw("Vertical");
         primaryShoot = Input.GetButton("Fire1");
         specialAttackInput = Input.GetButton("Fire2");
+        interactInput = Input.GetKeyDown(KeyCode.E);
     }
 
     private void UpdatePlayerState()
