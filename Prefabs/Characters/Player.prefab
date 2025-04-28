@@ -159,8 +159,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.004299879, y: -0.0065000057, z: 0}
-    m_Extent: {x: 4.5011997, y: 4.5018997, z: 0}
+    m_Center: {x: -0.0024998188, y: 0.005350113, z: 0}
+    m_Extent: {x: 4.4990997, y: 4.50105, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -486,17 +486,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66f4abaf64e7774da70cb4ec5ef3d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSpeed: 16
+  _playerSpeed: 4
   angle: 0
   model: {fileID: 7446200237669261595}
   playerStates: 0
   isFacingRight: 1
   primaryShoot: 0
   specialAttackInput: 0
+  interactInput: 0
+  dashInput: 0
+  isTeleporting: 0
   weapon: {fileID: 7557922594949356377}
   turret: {fileID: 5184545853596079563}
   externalForceDuration: 0.3
   damagedDuration: 0.5
+  dashSpeed: 10
+  dashDuration: 0.2
+  dashCooldown: 1
 --- !u!114 &2051014443916020073
 MonoBehaviour:
   m_ObjectHideFlags: 0

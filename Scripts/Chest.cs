@@ -161,7 +161,11 @@ public class Chest : MonoBehaviour
             Vector3 horizontalPosition = Vector3.Lerp(startPosition, targetPosition, t);
             float height = arcHeight * 4f * (t - t * t);
 
-            itemTransform.position = horizontalPosition + new Vector3(0f, height, 0f);
+            try
+            {
+                itemTransform.position = horizontalPosition + new Vector3(0f, height, 0f);
+            }
+            catch{}            
 
             yield return null;
         }

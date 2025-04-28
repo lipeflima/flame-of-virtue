@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -16,10 +14,10 @@ public class PlayerController : MonoBehaviour
     private PlayerWeaponControll weaponControll;
     private string currentAnimState = "";
     public bool isFacingRight = true;
-    public bool primaryShoot = false, specialAttackInput = false, interactInput = false;
+    public bool primaryShoot = false, specialAttackInput = false, interactInput = false, dashInput = false;
     public bool isTeleporting = false;
     public Transform weapon, turret;
-    public ComboSystem comboSystem {get; private set;}
+    public ComboSystem comboSystem { get; private set; }
 
     // Knockback e dano temporizado
     private Vector2 externalForce;
@@ -29,12 +27,21 @@ public class PlayerController : MonoBehaviour
     private float damagedTimer = 0f;
     [SerializeField] private float damagedDuration = 0.5f;
 
+    // Variáveis para o Dash
+    [Header("Dash Config")]
+    [SerializeField] private float dashSpeed = 10f; // Velocidade do dash
+    [SerializeField] private float dashDuration = 0.2f; // Duração do dash
+    [SerializeField] private float dashCooldown = 1f; // Cooldown do dash
+    private float dashTimer = 0f;
+    private bool isDashing = false;
+
     public enum PlayerStates
     {
         Idle,
         Moving,
         Damaged,
-        Dead
+        Dead,
+        Dashing
     }
 
     void Awake()
@@ -47,7 +54,7 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody2D = GetComponent<Rigidbody2D>();
         anim = model.GetComponent<Animator>();
         energySystem = GetComponent<EnergySystem>();
-        playerStates = PlayerStates.Idle;        
+        playerStates = PlayerStates.Idle;
         weaponControll = GetComponent<PlayerWeaponControll>();
         cam = Camera.main;
         comboSystem = GetComponent<ComboSystem>();
@@ -64,7 +71,7 @@ public class PlayerController : MonoBehaviour
         UpdatePlayerState();
         UpdateAnimation();
 
-        if (CanMove() && !isTeleporting)
+        if (CanMove() && !isTeleporting && !isDashing)
         {
             SetMovement();
         }
@@ -72,6 +79,11 @@ public class PlayerController : MonoBehaviour
         if (externalForceTimer > 0f)
         {
             ApplyForce();
+        }
+
+        if (isDashing)
+        {
+            DashMovement();
         }
     }
 
@@ -82,6 +94,7 @@ public class PlayerController : MonoBehaviour
         primaryShoot = Input.GetButton("Fire1");
         specialAttackInput = Input.GetButton("Fire2");
         interactInput = Input.GetKeyDown(KeyCode.E);
+        dashInput = Input.GetButtonDown("Jump"); // Alterar de acordo com o seu input
     }
 
     private void UpdatePlayerState()
@@ -90,25 +103,26 @@ public class PlayerController : MonoBehaviour
         {
             playerStates = PlayerStates.Dead;
         }
-            
         else if (damagedTimer > 0f)
         {
             playerStates = PlayerStates.Damaged;
         }
-            
+        else if (isDashing)
+        {
+            playerStates = PlayerStates.Dashing;
+        }
         else if (_playerDirection != Vector2.zero)
         {
             playerStates = PlayerStates.Moving;
         }
-            
         else
         {
             playerStates = PlayerStates.Idle;
         }
 
-        if(energySystem.GetLifeStatus())
+        if (energySystem.GetLifeStatus())
         {
-            if(primaryShoot)
+            if (primaryShoot)
             {
                 weaponControll.Shoot();
             }
@@ -117,13 +131,18 @@ public class PlayerController : MonoBehaviour
                 weaponControll.StopShoot();
             }
 
-            if(specialAttackInput && comboSystem.GetSpecialStatus())
+            if (specialAttackInput && comboSystem.GetSpecialStatus())
             {
                 weaponControll.ShootSpecial();
             }
 
+            if(dashInput)
+            {
+                TryDash();
+            }
+
             //SetRotation();
-        }            
+        }
     }
 
     private void UpdateAnimation()
@@ -141,6 +160,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case PlayerStates.Dead:
                 SetAnimationState("Dead");
+                break;
+            case PlayerStates.Dashing:
+                SetAnimationState("Dashing");
                 break;
         }
     }
@@ -175,12 +197,12 @@ public class PlayerController : MonoBehaviour
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         turret.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        if(mousePos.x < transform.position.x && isFacingRight)
+        if (mousePos.x < transform.position.x && isFacingRight)
         {
             Flip();
         }
 
-        if(mousePos.x > transform.position.x && !isFacingRight)
+        if (mousePos.x > transform.position.x && !isFacingRight)
         {
             Flip();
         }
@@ -220,5 +242,36 @@ public class PlayerController : MonoBehaviour
 
         if (externalForceTimer > 0f)
             externalForceTimer -= Time.fixedDeltaTime;
+
+        if (dashTimer > 0f)
+            dashTimer -= Time.fixedDeltaTime;
+        else if (isDashing)
+        {
+            isDashing = false;
+        }
+    }
+
+    // Lógica do Dash
+    private void DashMovement()
+    {
+        // Realiza o dash na direção em que o player está se movendo
+        Vector2 dashDirection = _playerDirection.normalized;
+        _playerRigidbody2D.velocity = dashDirection * dashSpeed;
+
+        // Finaliza o dash após a duração
+        if (dashTimer <= 0f)
+        {
+            isDashing = false;
+        }
+    }
+
+    // Método que é chamado quando o jogador pressiona o botão de dash
+    public void TryDash()
+    {
+        if (dashTimer <= 0f)
+        {
+            isDashing = true;
+            dashTimer = dashDuration;
+        }
     }
 }
