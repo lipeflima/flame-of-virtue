@@ -18,12 +18,11 @@ public class PuzzleManager : MonoBehaviour
     }
 
     void OpenDoor()
-    {
-        // Se quiser apenas desativar
-        doorToOpen.SetActive(false);
-
+    {       
         // Se tiver animação, pode chamar um Animator aqui
         // doorToOpen.GetComponent<Animator>().SetTrigger("Open");
         GetComponent<HintUIManager>().MostrarAviso();
+        // Se quiser apenas desativar
+        doorToOpen.SetActive(false);
     }
 }

@@ -6,10 +6,11 @@ public class PlayerInventory : MonoBehaviour
     public bool hasGoldKey = false;
     public bool hasSilverKey = false;
     public bool hasRustedKey = false;
+    public bool hasRedKey = false;
     public float currentGold;
     public TMP_Text goldText;
 
-    private List<string> itens = new List<string>();
+    [SerializeField] private List<string> itens = new List<string>();
     
     public void AddGold(float amount)
     {

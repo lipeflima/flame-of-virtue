@@ -235,7 +235,6 @@ public class TheJudgeBoss : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("MORREEEEEEEEEEEEEEE");
         SceneManager.LoadScene("GameOver");
     }
 }
