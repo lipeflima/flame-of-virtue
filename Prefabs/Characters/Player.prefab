@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 33be12e7db2ace490000000043fe30716b210db593e16f23e9b20d6709a1eac9
+  m_ApplyToSortingLayers: d7584ab857efb6d100000000cd29107cc7e2440a196f1ba0bdb93e2b31ab3c9b6740f14f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -159,8 +159,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0024998188, y: 0.005350113, z: 0}
-    m_Extent: {x: 4.4990997, y: 4.50105, z: 0}
+    m_Center: {x: 0.0000500679, y: -0.000099897385, z: 0}
+    m_Extent: {x: 4.50235, y: 4.5071, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 615830188761991054}
   - component: {fileID: 747348748261654591}
   - component: {fileID: 6872870483290146291}
+  - component: {fileID: 7272883284211190215}
   m_Layer: 3
   m_Name: New Piskel (21)_0
   m_TagString: Untagged
@@ -276,7 +277,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 594534803
+  m_SortingLayerID: -1608814823
   m_SortingLayer: 3
   m_SortingOrder: 96
   m_Sprite: {fileID: 1060352272, guid: a82d29f89385ccb4b80e48c322007872, type: 3}
@@ -324,6 +325,18 @@ Animator:
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6872870483290146291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446200237669261595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309f8a199c6827d46b212a6804d099ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7272883284211190215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -486,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66f4abaf64e7774da70cb4ec5ef3d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSpeed: 4
+  _playerSpeed: 6
   angle: 0
   model: {fileID: 7446200237669261595}
   playerStates: 0
@@ -516,8 +529,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyBar: {fileID: 0}
-  maxEnergy: 100000
-  currentEnergy: 100000
+  maxEnergy: 300
+  currentEnergy: 300
 --- !u!114 &665117601218480820
 MonoBehaviour:
   m_ObjectHideFlags: 0

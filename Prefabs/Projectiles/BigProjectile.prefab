@@ -79,6 +79,7 @@ MonoBehaviour:
   damage: 10
   colidiu: 0
   canMove: 1
+  hitEffect: {fileID: 0}
 --- !u!61 &251148053655010019
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -196,7 +197,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1608814823
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 42835636, guid: d683d442a061724468c4779bab91aebd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
