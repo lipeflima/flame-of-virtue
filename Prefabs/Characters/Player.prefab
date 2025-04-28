@@ -159,8 +159,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0000500679, y: -0.000099897385, z: 0}
-    m_Extent: {x: 4.50235, y: 4.5071, z: 0}
+    m_Center: {x: 0.0035998821, y: 0.0037999153, z: 0}
+    m_Extent: {x: 4.5034, y: 4.4994, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -513,9 +513,9 @@ MonoBehaviour:
   turret: {fileID: 5184545853596079563}
   externalForceDuration: 0.3
   damagedDuration: 0.5
-  dashSpeed: 10
-  dashDuration: 0.2
-  dashCooldown: 1
+  dashSpeed: 15
+  dashDuration: 0.25
+  dashCooldown: 0.5
 --- !u!114 &2051014443916020073
 MonoBehaviour:
   m_ObjectHideFlags: 0

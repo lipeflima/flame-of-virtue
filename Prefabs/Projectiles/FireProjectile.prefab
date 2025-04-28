@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  lifeTime: 10
-  damage: 2
+  lifeTime: 6
+  damage: 4
   colidiu: 0
   canMove: 0
   hitEffect: {fileID: 2058229067824278280, guid: 1da3eabb7362f424b99e1c9fca60abd2, type: 3}

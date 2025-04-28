@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TheJudgeBoss : MonoBehaviour
 {
     public enum BossPhase { Phase1, Phase2, Phase3 }
@@ -198,7 +198,8 @@ public class TheJudgeBoss : MonoBehaviour
     {
         // anim.SetTrigger("Die");
         // Desativar coliders, parar ações etc.
-        Destroy(gameObject);
+        Destroy(gameObject, 3.1f);
+        Invoke("GameOver", 3);
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -230,5 +231,11 @@ public class TheJudgeBoss : MonoBehaviour
     public float GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    void GameOver()
+    {
+        Debug.Log("MORREEEEEEEEEEEEEEE");
+        SceneManager.LoadScene("GameOver");
     }
 }
