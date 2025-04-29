@@ -7,6 +7,7 @@ public class OpenDoor : MonoBehaviour
     public Collider2D portaoCollider;     // colisor do portão
     [SerializeField] private bool playerNearby = false;
     private PlayerInventory playerInventory;
+    [SerializeField] private Key.KeyType keyType;
 
     [Header("UI")]
     public HintUIManager chaveUIManager;
@@ -15,14 +16,26 @@ public class OpenDoor : MonoBehaviour
     {
         if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
-            if (playerInventory != null && playerInventory.hasKey)
+            if (playerInventory != null)
             {
-                AbrirPortao();
+                if ((keyType == Key.KeyType.RustedKey) && playerInventory.hasRustedKey) 
+                {
+                    AbrirPortao();
+                }
+                else if ((keyType == Key.KeyType.SilverKey) && playerInventory.hasSilverKey)
+                {
+                    AbrirPortao();
+                }
+                else if ((keyType == Key.KeyType.GoldKey) && playerInventory.hasGoldKey)
+                {
+                    AbrirPortao();
+                }
+                else 
+                {
+                    chaveUIManager?.MostrarAviso();
+                }
             }
-            else 
-            {
-                chaveUIManager?.MostrarAviso();
-            }
+            
         }
     }
 

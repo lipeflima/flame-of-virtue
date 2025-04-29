@@ -21,7 +21,6 @@ public class ActivateObjectiveTrigger : MonoBehaviour
                 foreach (var objectiveIndex in objectivesIndexes)
                 {
                     objectiveManager.ActivateObjective(objectiveIndex);
-                    Debug.Log("Objetivo " + objectiveIndex + " ativado!");
 
                     if (deactivateTriggerAfterActivation)
                     {
