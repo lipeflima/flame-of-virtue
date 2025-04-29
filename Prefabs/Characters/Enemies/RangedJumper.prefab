@@ -224,7 +224,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8714476120693035537, guid: 52e54b63f481a3d4dbf7c7a65c8d4ed1, type: 3}
   model: {fileID: 0}
   spriteRenderer: {fileID: 7109366877430322719}
-  attackRange: 30
+  attackRange: 20
   attackCooldown: 3
   waitInitialTime: 0
   dangerRange: 4

@@ -17,6 +17,6 @@ public class HintUIManager : MonoBehaviour
         HintWarningUI.SetActive(true);
         yield return new WaitForSeconds(tempoExibicao);
         HintWarningUI.SetActive(false);
-        if (shouldDestroy == true) Destroy(gameObject, 1);
+        if (shouldDestroy == true) this.enabled = false;
     }
 }
