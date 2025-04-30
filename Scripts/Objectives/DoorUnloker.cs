@@ -9,6 +9,7 @@ public class DoorUnloker : MonoBehaviour
     public string[] requiredItems; // Nomes dos 4 itens necessários
 
     private bool playerInArea = false;
+    public bool hasDoor = false;
 
     private void Start()
     {
@@ -49,7 +50,8 @@ public class DoorUnloker : MonoBehaviour
     {
         if (HasRequiredItems())
         {
-            if (lockedDoor != null) lockedDoor.SetActive(true);
+            if (hasDoor) lockedDoor.SetActive(true);
+            GetComponent<HintUIManager>().MostrarAvisoSucesso();
             interactionUI.SetActive(false); // Oculta a UI após conseguir
             this.enabled = false; // Desativa o script para não interagir novamente
         }

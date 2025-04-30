@@ -26,9 +26,7 @@ public class Puzzle02Manager : MonoBehaviour
 
     void OpenDoor()
     {       
-        // Se tiver animação, pode chamar um Animator aqui
-        // doorToOpen.GetComponent<Animator>().SetTrigger("Open");
-        GetComponent<HintUIManager>().MostrarAviso();
+        GetComponent<HintUIManager>().MostrarAvisoSucesso();
         // Se quiser apenas desativar
         doorToOpen.SetActive(false);
     }

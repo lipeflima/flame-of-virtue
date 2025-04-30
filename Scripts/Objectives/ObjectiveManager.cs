@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class ObjectiveManager : MonoBehaviour
 {
+    public static ObjectiveManager instance;
+
     [Header("Lista de todos os objetivos (definidos no Inspector)")]
     public List<Objective> allObjectives = new List<Objective>();
 
@@ -11,11 +14,13 @@ public class ObjectiveManager : MonoBehaviour
     public GameObject objectivesPanel; // O painel inteiro (ativar/desativar)
     public Transform objectivesContainer; // Container onde os textos serão instanciados
     public GameObject objectiveTextPrefab; // Prefab do texto para cada objetivo
+    public GameObject completedObjectivePanel;
 
     private Dictionary<Objective, GameObject> activeObjectivesUI = new Dictionary<Objective, GameObject>();
 
     private void Start()
     {
+        instance = this;
         // No começo do jogo o painel de objetivos fica escondido
         if (objectivesPanel != null)
             objectivesPanel.SetActive(false);
@@ -71,6 +76,9 @@ public class ObjectiveManager : MonoBehaviour
             obj.isCompleted = true;
             RemoveObjectiveUI(obj);
         }
+
+        StartCoroutine(CompletedObjectiveFeedback());
+
     }
 
     // Criar UI de um objetivo ativo
@@ -90,5 +98,12 @@ public class ObjectiveManager : MonoBehaviour
             Destroy(activeObjectivesUI[obj]);
             activeObjectivesUI.Remove(obj);
         }
+    }
+
+    private IEnumerator CompletedObjectiveFeedback()
+    {
+        completedObjectivePanel.SetActive(true);
+        yield return new WaitForSeconds(3);
+        completedObjectivePanel.SetActive(false);
     }
 }

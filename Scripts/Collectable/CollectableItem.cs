@@ -14,6 +14,8 @@ public class ItemColetavel : MonoBehaviour
     }
     void CheckItem(Collider2D other)
     {
+        PlayerInventory inventory = other.GetComponent<PlayerInventory>();
+
         switch(itemName)
         {
             case "Energia":
@@ -23,17 +25,53 @@ public class ItemColetavel : MonoBehaviour
                 {
                     energia.AddEnergy(amount);
                 }
-                
             break;
 
             case "Gold":
-                PlayerInventory inventory = other.gameObject.GetComponent<PlayerInventory>();
+                if(inventory != null)
+                {
+                    inventory.AddGold(amount);
+                }           
+            break;
 
-            if(inventory != null)
-            {
-                inventory.AddGold(amount);
-            }            
+            case "Dove":
+                ObjectiveManager.instance.CompleteObjective(0);
+                if(inventory != null)
+                {
+                    inventory.AddItem("Dove");
+                }
+            break;
 
+            case "Water":
+                ObjectiveManager.instance.CompleteObjective(1);
+                if(inventory != null)
+                {
+                    inventory.AddItem("Water");
+                }
+            break;
+
+            case "Lamb":
+                ObjectiveManager.instance.CompleteObjective(2);
+                if(inventory != null)
+                {
+                    inventory.AddItem("Lamb");
+                }
+            break;
+
+            case "Heart":
+                ObjectiveManager.instance.CompleteObjective(3);
+                Debug.Log("Completou o Heart!!!");
+                if(inventory != null)
+                {
+                    inventory.AddItem("Heart");
+                }
+            break;
+
+            case "BossKey":
+                if(inventory != null)
+                {
+                    inventory.AddItem("BossKey");
+                }
             break;
         }
 
