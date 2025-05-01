@@ -162,8 +162,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 60
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
-  itemDrops: []
-  dropChance: 0.25
+  itemDrops:
+  - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
+  dropChance: 0.1
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1826281843256688808
 MonoBehaviour:

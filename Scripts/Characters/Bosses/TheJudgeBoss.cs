@@ -25,6 +25,7 @@ public class TheJudgeBoss : MonoBehaviour
     private bool isDashing = false;
     public float dashTime = 2f;
     public GameObject minionPrefab;
+    public GameObject minionPrefab2;
     public Transform[] spawnPoints;
     public float invokeCooldown = 10f;
     private float invokeTimer;
@@ -148,6 +149,7 @@ public class TheJudgeBoss : MonoBehaviour
 
     void Phase3_Behavior()
     {
+        Phase1_Behavior();
         teleportTimer += Time.deltaTime;
         if (teleportTimer >= teleportCooldown)
         {
@@ -179,6 +181,7 @@ public class TheJudgeBoss : MonoBehaviour
         foreach (Transform point in spawnPoints)
         {
             Instantiate(minionPrefab, point.position, Quaternion.identity);
+            Instantiate(minionPrefab2, point.position, Quaternion.identity);
         }
 
         // anim.SetTrigger("Summon");

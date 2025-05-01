@@ -19,6 +19,7 @@ public class RangedJumper : MonoBehaviour
     public float waitInitialTime = 0.2f;
 
     [Header("Distância Crítica para Pulo")]
+    public bool canJump = false;
     public float dangerRange = 2f;
     public float safeDistanceMin = 3f;
     public float safeDistanceMax = 5f;
@@ -49,8 +50,11 @@ public class RangedJumper : MonoBehaviour
 
         if (distance <= dangerRange && !isPreparingJump && !isJumping)
         {
-            StartCoroutine(PrepareJump());
-            return;
+            if (canJump)
+            {
+                StartCoroutine(PrepareJump());
+                return;
+            } 
         }
 
         if (distance <= attackRange && !isPreparingJump && !isJumping)

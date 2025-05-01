@@ -60,7 +60,6 @@ public class ItemColetavel : MonoBehaviour
 
             case "Heart":
                 ObjectiveManager.instance.CompleteObjective(3);
-                Debug.Log("Completou o Heart!!!");
                 if(inventory != null)
                 {
                     inventory.AddItem("Heart");
