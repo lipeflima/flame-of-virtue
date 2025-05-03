@@ -17,7 +17,7 @@ public class InteractionHint : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                GetComponent<HintUIManager>().MostrarAviso();
+                GetComponent<HintUIManager>().ShowHint(true);
             }
         }
     }

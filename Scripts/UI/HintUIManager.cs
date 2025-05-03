@@ -9,19 +9,13 @@ public class HintUIManager : MonoBehaviour
     public float tempoExibicao = 2f;
     public bool shouldDestroy = true;
 
-    public void MostrarAviso()
+    public void ShowHint(bool success)
     {
-        HintWarningUI = hintFailure;
-        StartCoroutine(ExibirTextoTemporario());
+        HintWarningUI = success ? hintSucess : hintFailure;
+        StartCoroutine(ShowTemporaryText());
     }
 
-    public void MostrarAvisoSucesso()
-    {
-        HintWarningUI = hintSucess;
-        StartCoroutine(ExibirTextoTemporario());
-    }
-
-    IEnumerator ExibirTextoTemporario()
+    IEnumerator ShowTemporaryText()
     {
         HintWarningUI.SetActive(true);
         yield return new WaitForSeconds(tempoExibicao);

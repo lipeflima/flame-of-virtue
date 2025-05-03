@@ -8,7 +8,7 @@ public class HintZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GetComponent<HintUIManager>().MostrarAvisoSucesso();
+            GetComponent<HintUIManager>().ShowHint(true);
         }
     }
 }

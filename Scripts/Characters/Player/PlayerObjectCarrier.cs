@@ -34,7 +34,6 @@ public class PlayerObjectCarrier : MonoBehaviour
             carriedObject = hit.gameObject;
             carriedObject.transform.SetParent(carryPoint); // Faz o objeto seguir o ponto de carga
             carriedObject.transform.localPosition = Vector3.zero; // Centraliza no ponto
-            // carriedObject.GetComponent<Rigidbody2D>().isKinematic = true; // Desativa a física para não sair voando
             isCarrying = true;
         }
     }
@@ -44,16 +43,8 @@ public class PlayerObjectCarrier : MonoBehaviour
         if (carriedObject != null)
         {
             carriedObject.transform.SetParent(null); // Solta do player
-            // carriedObject.GetComponent<Rigidbody2D>().isKinematic = false; // Volta a física
             carriedObject = null;
             isCarrying = false;
         }
-    }
-
-    // Opcional: desenhar o raio de alcance no editor para facilitar ajustes
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, pickUpDistance);
     }
 }

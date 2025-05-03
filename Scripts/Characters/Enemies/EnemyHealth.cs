@@ -16,7 +16,8 @@ public class EnemyHP : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        health -= amount;
+        int multiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<ComboSystem>().GetMultiplier();  
+        health -= amount*multiplier;
         gameObject.GetComponent<DamageIndicator>().MostrarIndicadorDeDano(amount);
         controller.comboSystem.AddHit(amount);
         Instantiate(hitEffect, transform.position, transform.rotation);

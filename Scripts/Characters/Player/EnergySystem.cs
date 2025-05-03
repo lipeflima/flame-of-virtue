@@ -61,6 +61,7 @@ public class EnergySystem : MonoBehaviour
         currentEnergy -= amount;
         currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
         gameObject.GetComponent<DamageIndicator>().MostrarIndicadorDeDano(amount);
+        gameObject.GetComponent<ComboSystem>().ResetMultiplier();
     }
     public bool GetLifeStatus()
     {
