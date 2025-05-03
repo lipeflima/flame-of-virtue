@@ -189,11 +189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &2620165
 MonoBehaviour:
@@ -717,6 +717,81 @@ Transform:
   - {fileID: 1364256005}
   m_Father: {fileID: 2522695051394623854}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &237218926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 237218927}
+  - component: {fileID: 237218929}
+  - component: {fileID: 237218928}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &237218927
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237218926}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1126251356}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: -10, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &237218928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237218926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d6398e2606cb39d4381ae2b7b6d50330, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &237218929
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237218926}
+  m_CullTransparentMesh: 1
 --- !u!1 &269890381
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,11 +857,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 200
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.1
+  dropChance: 0.02
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &269890385
 MonoBehaviour:
@@ -965,11 +1040,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &277393143
 MonoBehaviour:
@@ -1171,11 +1246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &278563531
 MonoBehaviour:
@@ -1483,11 +1558,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &282175455
 MonoBehaviour:
@@ -1795,11 +1870,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &292345814
 MonoBehaviour:
@@ -2107,11 +2182,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &297614042
 MonoBehaviour:
@@ -2312,11 +2387,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 200
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.1
+  dropChance: 0.02
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &343876437
 MonoBehaviour:
@@ -2601,11 +2676,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &397961250
 MonoBehaviour:
@@ -2807,11 +2882,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &407825326
 MonoBehaviour:
@@ -3119,11 +3194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &436243393
 MonoBehaviour:
@@ -3325,11 +3400,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &454278016
 MonoBehaviour:
@@ -3531,11 +3606,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &515064979
 MonoBehaviour:
@@ -3843,11 +3918,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &578886326
 MonoBehaviour:
@@ -4049,11 +4124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &591624463
 MonoBehaviour:
@@ -4503,11 +4578,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &646065590
 MonoBehaviour:
@@ -4956,11 +5031,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 200
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.1
+  dropChance: 0.02
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &680080056
 MonoBehaviour:
@@ -5139,11 +5214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &703219743
 MonoBehaviour:
@@ -5450,11 +5525,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 200
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.1
+  dropChance: 0.02
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &708220929
 MonoBehaviour:
@@ -5845,11 +5920,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &799132497
 MonoBehaviour:
@@ -6262,11 +6337,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 200
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.1
+  dropChance: 0.02
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &829248504
 MonoBehaviour:
@@ -6692,11 +6767,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 200
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.1
+  dropChance: 0.02
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &874306026
 MonoBehaviour:
@@ -6874,11 +6949,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 200
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.1
+  dropChance: 0.02
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &943874637
 MonoBehaviour:
@@ -7163,11 +7238,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &976382391
 MonoBehaviour:
@@ -7303,6 +7378,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &995870288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 995870289}
+  m_Layer: 5
+  m_Name: Handle Slide Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &995870289
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995870288}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2010405551}
+  m_Father: {fileID: 1126251356}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1017255094
 GameObject:
   m_ObjectHideFlags: 0
@@ -7727,6 +7838,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1052981338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1052981339}
+  m_Layer: 5
+  m_Name: Fill Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1052981339
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052981338}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1349696999}
+  m_Father: {fileID: 1126251356}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1111870652
 GameObject:
   m_ObjectHideFlags: 0
@@ -7899,11 +8046,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1112097221
 MonoBehaviour:
@@ -8211,11 +8358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1116715856
 MonoBehaviour:
@@ -8387,6 +8534,96 @@ Transform:
   - {fileID: 2620162}
   m_Father: {fileID: 2522695051394623854}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1126251354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1126251356}
+  - component: {fileID: 1126251355}
+  m_Layer: 5
+  m_Name: MultiplierTimerBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1126251355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126251354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 2010405553}
+  m_FillRect: {fileID: 1349696999}
+  m_HandleRect: {fileID: 2010405551}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!224 &1126251356
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126251354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 237218927}
+  - {fileID: 1052981339}
+  - {fileID: 995870289}
+  m_Father: {fileID: 2641770225681875394}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.1419, y: 14.032}
+  m_SizeDelta: {x: 210.2834, y: 15.0639}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1162787408
 GameObject:
   m_ObjectHideFlags: 0
@@ -8453,11 +8690,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1162787412
 MonoBehaviour:
@@ -9118,11 +9355,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 200
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.1
+  dropChance: 0.02
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1276306080
 MonoBehaviour:
@@ -9301,11 +9538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1287109292
 MonoBehaviour:
@@ -9507,11 +9744,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1289618648
 MonoBehaviour:
@@ -9683,6 +9920,81 @@ Transform:
   - {fileID: 1112097218}
   m_Father: {fileID: 2522695051394623854}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1349696998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1349696999}
+  - component: {fileID: 1349697001}
+  - component: {fileID: 1349697000}
+  m_Layer: 5
+  m_Name: Fill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1349696999
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349696998}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1052981339}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1349697000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349696998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.563735, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1349697001
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349696998}
+  m_CullTransparentMesh: 1
 --- !u!1 &1364256004
 GameObject:
   m_ObjectHideFlags: 0
@@ -9749,11 +10061,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1364256008
 MonoBehaviour:
@@ -10060,11 +10372,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 200
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.1
+  dropChance: 0.02
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1417724325
 MonoBehaviour:
@@ -10349,11 +10661,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1431537023
 MonoBehaviour:
@@ -10661,11 +10973,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1451654041
 MonoBehaviour:
@@ -10867,11 +11179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1461169068
 MonoBehaviour:
@@ -11073,11 +11385,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1471902260
 MonoBehaviour:
@@ -11385,11 +11697,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1487760576
 MonoBehaviour:
@@ -11697,11 +12009,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1559119549
 MonoBehaviour:
@@ -12257,11 +12569,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1621718994
 MonoBehaviour:
@@ -12463,11 +12775,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1650731390
 MonoBehaviour:
@@ -12987,11 +13299,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1807589152
 MonoBehaviour:
@@ -13193,11 +13505,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1819619613
 MonoBehaviour:
@@ -13825,11 +14137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &1995365863
 MonoBehaviour:
@@ -13965,6 +14277,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2010405550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2010405551}
+  - component: {fileID: 2010405552}
+  - component: {fileID: 2010405553}
+  m_Layer: 5
+  m_Name: Handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2010405551
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010405550}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 995870289}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2010405552
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010405550}
+  m_CullTransparentMesh: 1
+--- !u!114 &2010405553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010405550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2015403843
 GameObject:
   m_ObjectHideFlags: 0
@@ -14031,11 +14418,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &2015403847
 MonoBehaviour:
@@ -14237,11 +14624,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &2019916409
 MonoBehaviour:
@@ -14443,11 +14830,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &2064840221
 MonoBehaviour:
@@ -14755,11 +15142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &2086160505
 MonoBehaviour:
@@ -14961,11 +15348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &2090471499
 MonoBehaviour:
@@ -21621,11 +22008,12 @@ RectTransform:
   - {fileID: 7978748917646413191}
   - {fileID: 5988582902188987075}
   - {fileID: 7557556827112445295}
+  - {fileID: 1126251356}
   m_Father: {fileID: 7271478039962586062}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 777, y: -487}
+  m_AnchoredPosition: {x: 838, y: 500}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &2664976737156903727
@@ -25582,6 +25970,7 @@ MonoBehaviour:
   comboBar: {fileID: 918950855634361488}
   multiplierUI: {fileID: 1882977988681380765}
   multiplierStatusUI: {fileID: 8125660211878690850}
+  multiplierTimerBar: {fileID: 1126251355}
 --- !u!483693784 &4039667944441793198
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -25989,8 +26378,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00819993, y: 0.004299879, z: 0}
-    m_Extent: {x: 4.5002003, y: 4.4987, z: 0}
+    m_Center: {x: 0.00090003014, y: 0.0016000271, z: 0}
+    m_Extent: {x: 4.4982996, y: 4.4981003, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -26702,11 +27091,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 200
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.1
+  dropChance: 0.02
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &4959377119913214805
 MonoBehaviour:
@@ -59436,7 +59825,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 132, y: 28.9}
+  m_AnchoredPosition: {x: 137, y: -51}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7588012536908534224
@@ -60826,11 +61215,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 100
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  dropChance: 0.011
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!224 &8615469523561383004
 RectTransform:
