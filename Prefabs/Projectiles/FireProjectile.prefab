@@ -82,6 +82,7 @@ MonoBehaviour:
   damage: 4
   colidiu: 0
   canMove: 0
+  destroy: 1
   hitEffect: {fileID: 2058229067824278280, guid: 1da3eabb7362f424b99e1c9fca60abd2, type: 3}
 --- !u!114 &1840759516029834413
 MonoBehaviour:
@@ -4812,7 +4813,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 594534803
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -14457,7 +14458,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1608814823
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 42835636, guid: d683d442a061724468c4779bab91aebd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
