@@ -6,7 +6,7 @@ public class PlayerProjectile : MonoBehaviour
     public float lifeTime = 5f;
     public int damage = 3;
     public bool colidiu = false;
-    public bool canMove;
+    public bool canMove, destroy;
     public GameObject hitEffect;
 
     void Update()
@@ -32,7 +32,7 @@ public class PlayerProjectile : MonoBehaviour
         }        
         
         SpawnEffects();
-        Destroy(gameObject);
+        if(destroy) Destroy(gameObject);
     }
 
     void SpawnEffects()

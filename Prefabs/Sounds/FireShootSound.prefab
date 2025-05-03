@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4817522863964481810}
+  - component: {fileID: -4942197755604493968}
   m_Layer: 0
   m_Name: FireShootSound
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   - {fileID: 851159582049251635}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4942197755604493968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5783096457510702836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9ef21b4c3e25149a3c428b2b385576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 3
+  hide: 0
 --- !u!1 &7353477582281537469
 GameObject:
   m_ObjectHideFlags: 0

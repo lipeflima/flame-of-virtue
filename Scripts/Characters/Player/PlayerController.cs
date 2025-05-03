@@ -12,13 +12,14 @@ public class PlayerController : MonoBehaviour
     public PlayerStates playerStates;
     public static PlayerController Instance;
     private PlayerWeaponControll weaponControll;
+    private PlayerSword sword;
     private string currentAnimState = "";
     public bool isFacingRight = true;
     public bool primaryShoot = false, specialAttackInput = false, interactInput = false, dashInput = false;
     public bool isTeleporting = false;
     public Transform weapon, turret;
     public ComboSystem comboSystem { get; private set; }
-
+    public WeaponInUse weaponInUSe;
     // Knockback e dano temporizado
     private Vector2 externalForce;
     private float externalForceTimer = 0f;
@@ -44,6 +45,13 @@ public class PlayerController : MonoBehaviour
         Dashing
     }
 
+    public enum WeaponInUse
+    {
+        Sword,
+        ProjectileWeapon,
+        Shield
+    }
+
     void Awake()
     {
         Instance = this;
@@ -56,6 +64,7 @@ public class PlayerController : MonoBehaviour
         energySystem = GetComponent<EnergySystem>();
         playerStates = PlayerStates.Idle;
         weaponControll = GetComponent<PlayerWeaponControll>();
+        sword = GetComponent<PlayerSword>();
         cam = Camera.main;
         comboSystem = GetComponent<ComboSystem>();
     }
@@ -122,14 +131,7 @@ public class PlayerController : MonoBehaviour
 
         if (energySystem.GetLifeStatus())
         {
-            if (primaryShoot)
-            {
-                weaponControll.Shoot();
-            }
-            else
-            {
-                weaponControll.StopShoot();
-            }
+            CheckWeaponIsUse();
 
             if (specialAttackInput && comboSystem.GetSpecialStatus())
             {
@@ -142,6 +144,30 @@ public class PlayerController : MonoBehaviour
             }
 
             //SetRotation();
+        }
+    }
+
+    private void CheckWeaponIsUse()
+    {
+        switch (weaponInUSe)
+        {
+            case WeaponInUse.ProjectileWeapon:
+                if (primaryShoot)
+                    weaponControll.Shoot();
+                else
+                    weaponControll.StopShoot();
+                break;
+
+            case WeaponInUse.Sword:
+                if (primaryShoot)
+                    sword.Attack();
+                else
+                    sword.StopAttack();
+                break;
+
+            case WeaponInUse.Shield:
+                // Adicione aqui o comportamento do escudo, se necessário.
+                break;
         }
     }
 
