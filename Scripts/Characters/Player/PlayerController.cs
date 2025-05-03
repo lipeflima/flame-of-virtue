@@ -207,10 +207,10 @@ public class PlayerController : MonoBehaviour
     private void SetMovement()
     {
         // Vira o personagem conforme a direção
-        if (_playerDirection.x > 0 && !isFacingRight)
-            Flip();
-        else if (_playerDirection.x < 0 && isFacingRight)
-            Flip();
+        //if (_playerDirection.x > 0 && !isFacingRight)
+            //Flip();
+        //else if (_playerDirection.x < 0 && isFacingRight)
+            //Flip();
 
         _playerRigidbody2D.MovePosition(_playerRigidbody2D.position + _playerSpeed * Time.fixedDeltaTime * _playerDirection.normalized);
     }

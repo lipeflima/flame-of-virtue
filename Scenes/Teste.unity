@@ -17152,8 +17152,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0036001205, y: -0.00034999847, z: 0}
-    m_Extent: {x: 4.5021, y: 4.49515, z: 0}
+    m_Center: {x: 0.0028998852, y: -0.0027999878, z: 0}
+    m_Extent: {x: 4.4941998, y: 4.4973, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -22035,8 +22035,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageEffectPrefab: {fileID: 1629741454583049656, guid: e7aa5e487bf9e964a888713f87951e60, type: 3}
+  attackRange: 2
   attackCooldown: 0.5
-  attackRange: 3
+  modelTransform: {fileID: 2580958377724842112}
 --- !u!114 &9106698743533992337
 MonoBehaviour:
   m_ObjectHideFlags: 0
