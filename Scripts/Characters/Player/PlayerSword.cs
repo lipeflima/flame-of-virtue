@@ -10,9 +10,18 @@ public class PlayerSword : MonoBehaviour
     private float lastAttackTime = 0f;
     private Camera mainCamera;
 
+    Vector3 mouseWorldPos;
+
     private void Start()
     {
         mainCamera = Camera.main;
+    }
+
+    private void Update()
+    {
+        mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0f;
+        HandleFlip(mouseWorldPos);
     }
 
     public void Attack()
@@ -20,19 +29,14 @@ public class PlayerSword : MonoBehaviour
         if (Time.time < lastAttackTime + attackCooldown)
             return;
 
-        lastAttackTime = Time.time;
-
-        Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f;
+        lastAttackTime = Time.time;        
 
         // Calcula direção e ponto de ataque respeitando o alcance
         Vector3 direction = (mouseWorldPos - transform.position).normalized;
         Vector3 clampedPos = transform.position + Vector3.ClampMagnitude(direction * attackRange, attackRange);
 
         // Instancia o efeito de dano
-        Instantiate(damageEffectPrefab, clampedPos, Quaternion.identity);
-
-        HandleFlip(mouseWorldPos);
+        Instantiate(damageEffectPrefab, clampedPos, Quaternion.identity);        
     }
 
     public void StopAttack()
