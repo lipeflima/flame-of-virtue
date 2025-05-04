@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HordeRoomManager : MonoBehaviour
@@ -18,8 +19,14 @@ public class HordeRoomManager : MonoBehaviour
 
     private List<GameObject> activeEnemies = new List<GameObject>(); // Lista para controlar inimigos vivos
 
+    [Header("Horde UI")]
+    public TMP_Text totalActiveEnemiesText;
+    public TMP_Text activeEnemiesText;
+    public GameObject hordCountUI;
+
     void Start()
     {
+        hordCountUI.SetActive(false);
         SetBarriers(false);
     }
 
@@ -35,11 +42,14 @@ public class HordeRoomManager : MonoBehaviour
             {
                 // Todas hordas derrotadas, liberar a barreira
                 SetBarriers(false);
+                hordCountUI.SetActive(false);
             }
         }
 
         // Limpa inimigos mortos da lista
         activeEnemies.RemoveAll(enemy => enemy == null);
+
+        activeEnemiesText.text = "" + activeEnemies.Count;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,7 +57,6 @@ public class HordeRoomManager : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerInside = true;
-
             // Fecha a sala
             SetBarriers(true);
         }
@@ -70,6 +79,8 @@ public class HordeRoomManager : MonoBehaviour
 
         currentHordeIndex++;
         spawningHorde = false;
+        totalActiveEnemiesText.text = "/" + activeEnemies.Count;
+        hordCountUI.SetActive(true);
     }
 
     Vector2 GetRandomSpawnPosition()
