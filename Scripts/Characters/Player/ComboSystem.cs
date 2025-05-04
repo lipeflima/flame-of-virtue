@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +9,7 @@ public class ComboSystem : MonoBehaviour
     public float maxHit = 100f;
     private bool canUseSpecial = false;
     public Slider comboBar;
+    // HEADER Multiplier
     public TMP_Text multiplierUI;
     public TMP_Text multiplierStatusUI;
     private int multiplierCount = 1;
@@ -18,6 +18,13 @@ public class ComboSystem : MonoBehaviour
     private Coroutine decayCoroutine;   
     private Coroutine pulseCoroutine;
     public Slider multiplierTimerBar;
+    // HEADER Especial Gauger
+    public Image fillImage;
+    public Image cooldownOverlay;
+    public float cooldownDuration = 5f;
+    private float cooldownTimer = 0f;
+    private bool isInCooldown = false;
+    private bool specialEnabled = false;
 
     void Start()
     {
@@ -27,6 +34,7 @@ public class ComboSystem : MonoBehaviour
     void Update()
     {
         CheckHit();
+        UpdateSpecialUI();
     }
 
     public void AddHit(float amount)
@@ -45,11 +53,12 @@ public class ComboSystem : MonoBehaviour
 
             if (!multiplierApplied)
             {
-                canUseSpecial = true;
+                if (!isInCooldown) canUseSpecial = true;
                 multiplierCount++;
                 multiplierApplied = true;
                 UpdateMaxHit();
                 StartDecayTimer();
+                EnableSpecial();
             }
             else
             {
@@ -70,8 +79,8 @@ public class ComboSystem : MonoBehaviour
 
         switch (multiplierCount)
         {
-            case 1: multiplierStatusUI.text = "Ok"; break;
-            case 2: multiplierStatusUI.text = "Better"; break;
+            case 1: multiplierStatusUI.text = "Fine"; break;
+            case 2: multiplierStatusUI.text = "Cool"; break;
             case 3: multiplierStatusUI.text = "Good"; break;
             case 4: multiplierStatusUI.text = "Awesome"; break;
             case 5: multiplierStatusUI.text = "Excelent"; break;
@@ -130,27 +139,15 @@ public class ComboSystem : MonoBehaviour
         }
     }
 
-    public void UseSpecial()
-    {
-        currentHit = 0;
-        canUseSpecial = false;
-        UpdateUI();
-    }
-    
-    public bool GetSpecialStatus()
-    {
-        return canUseSpecial;
-    }
-
     public void ResetMultiplier()
     {
         currentHit = 0;
-        canUseSpecial = false;
         multiplierCount = 1;
         UpdateUI();
         multiplierTimerBar.gameObject.SetActive(false); // esconde a barra
         multiplierTimerBar.value = decayDuration; // reseta valor
         UpdateMaxHit();
+        ResetSpecial();
     }
 
     public int GetMultiplier()
@@ -187,5 +184,57 @@ public class ComboSystem : MonoBehaviour
 
         multiplierTimerBar.gameObject.SetActive(false);
         ResetMultiplier();
+    }
+
+    public void EnableSpecial()
+    {
+        specialEnabled = true;
+        fillImage.fillAmount = 1f;
+    }
+
+    public void StartCooldown()
+    {
+        isInCooldown = true;
+        cooldownTimer = cooldownDuration;
+        cooldownOverlay.fillAmount = 1f;
+    }
+
+    public void ResetSpecial()
+    {
+        specialEnabled = false;
+        isInCooldown = false;
+        fillImage.fillAmount = 0f;
+        cooldownOverlay.fillAmount = 0f;
+    }
+
+    private void UpdateSpecialUI()
+    {
+        if (isInCooldown)
+        {
+            cooldownTimer -= Time.deltaTime;
+            cooldownOverlay.fillAmount = cooldownTimer / cooldownDuration;
+
+            if (cooldownTimer <= 0f)
+            {
+                isInCooldown = false;
+                cooldownOverlay.fillAmount = 0f;
+                if (specialEnabled) canUseSpecial = true;
+            }
+        }
+    }
+
+    public void UseSpecial()
+    {
+        canUseSpecial = false;
+        if (specialEnabled && !isInCooldown)
+        {
+            // Executar o golpe especial aqui
+            StartCooldown();
+        }
+    }
+    
+    public bool GetSpecialStatus()
+    {
+        return canUseSpecial;
     }
 }
