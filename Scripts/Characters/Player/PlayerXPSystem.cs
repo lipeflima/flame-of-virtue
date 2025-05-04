@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,9 @@ public class PlayerXP : MonoBehaviour
     public int xpToNextLevel;
     
     public Image xpBarFill;
+    public TMP_Text currentXpText;
+    public TMP_Text xpToNextLevelText;
+    public LevelUpManager levelUpManager;
 
     void Start()
     {
@@ -17,13 +21,13 @@ public class PlayerXP : MonoBehaviour
 
     public void AddXP(int amount)
     {
+        int multiplier = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<ComboSystem>().GetMultiplier();  
+        amount *=  multiplier;
         currentXP += amount;
 
         while (currentXP >= xpToNextLevel && currentLevel < 10)
         {
-            currentXP -= xpToNextLevel;
-            currentLevel++;
-            xpToNextLevel = GetXPToLevel(currentLevel);
+            LevelUp();
             // UnlockSkills();
             // Aqui você pode adicionar efeitos, som, etc.
         }
@@ -35,6 +39,17 @@ public class PlayerXP : MonoBehaviour
     {
         float fillAmount = (float)currentXP / xpToNextLevel;
         xpBarFill.fillAmount = fillAmount;
+        currentXpText.text = "XP: " + currentXP;
+        xpToNextLevelText.text = "/ " + xpToNextLevel;
+    }
+
+    private void LevelUp()
+    {
+        currentXP -= xpToNextLevel;
+        currentLevel++;
+        xpToNextLevel = GetXPToLevel(currentLevel);
+        levelUpManager.ShowText(gameObject.transform);
+        levelUpManager.PlayLevelUpEffect();
     }
 
     int GetXPToLevel(int level)

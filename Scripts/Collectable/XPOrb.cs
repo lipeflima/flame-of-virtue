@@ -4,6 +4,7 @@ public class XPOrb : MonoBehaviour
 {
     public int xpAmount = 1;
     public float moveSpeed = 5f;
+    public float triggerDistance = 8f;
     private Transform player;
 
     void Start()
@@ -13,7 +14,7 @@ public class XPOrb : MonoBehaviour
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, player.position) < 3f)
+        if (Vector2.Distance(transform.position, player.position) < triggerDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
         }

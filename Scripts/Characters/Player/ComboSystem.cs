@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class ComboSystem : MonoBehaviour
 {
     private float currentHit;
-    public float maxHit = 100f;
+    public float baseHit = 100f;
+    private float maxHit = 100f;
     private bool canUseSpecial = false;
     public Slider comboBar;
     // HEADER Multiplier
@@ -25,6 +26,8 @@ public class ComboSystem : MonoBehaviour
     private float cooldownTimer = 0f;
     private bool isInCooldown = false;
     private bool specialEnabled = false;
+    // HEADER Especial Flame Icon
+    public SpecialIconUIManager specialUIManager;
 
     void Start()
     {
@@ -54,6 +57,7 @@ public class ComboSystem : MonoBehaviour
             if (!multiplierApplied)
             {
                 if (!isInCooldown) canUseSpecial = true;
+                specialUIManager.UpdateFlameIcons(multiplierCount);
                 multiplierCount++;
                 multiplierApplied = true;
                 UpdateMaxHit();
@@ -115,7 +119,6 @@ public class ComboSystem : MonoBehaviour
 
     void UpdateMaxHit()
     {
-        float baseHit = 100f;
         float growthRate = 1.5f;
         maxHit = Mathf.RoundToInt((baseHit + multiplierCount * 20f) * Mathf.Pow(growthRate, multiplierCount));
         comboBar.maxValue = maxHit;
@@ -148,6 +151,8 @@ public class ComboSystem : MonoBehaviour
         multiplierTimerBar.value = decayDuration; // reseta valor
         UpdateMaxHit();
         ResetSpecial();
+        specialUIManager.ClearFlameIcons();
+        canUseSpecial = false;
     }
 
     public int GetMultiplier()
