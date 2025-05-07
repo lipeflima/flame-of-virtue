@@ -7,8 +7,8 @@ public class Objective
     [TextArea]
     public string description; // Descrição (opcional)
 
-    [HideInInspector]
+    // [HideInInspector]
     public bool isActive; // Se o objetivo já foi descoberto
-    [HideInInspector]
+    // [HideInInspector]
     public bool isCompleted; // Se o objetivo foi concluído
 }

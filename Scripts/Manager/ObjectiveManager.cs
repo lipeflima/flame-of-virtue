@@ -15,6 +15,7 @@ public class ObjectiveManager : MonoBehaviour
     public Transform objectivesContainer; // Container onde os textos serão instanciados
     public GameObject objectiveTextPrefab; // Prefab do texto para cada objetivo
     public GameObject completedObjectivePanel;
+    public ObjectivesUIManager uiManager;
 
     private Dictionary<Objective, GameObject> activeObjectivesUI = new Dictionary<Objective, GameObject>();
 
@@ -24,12 +25,14 @@ public class ObjectiveManager : MonoBehaviour
         // No começo do jogo o painel de objetivos fica escondido
         if (objectivesPanel != null)
             objectivesPanel.SetActive(false);
+
+        uiManager.InitializeObjectives(allObjectives);
     }
 
     private void Update()
     {
         // Verifica se o jogador apertou a tecla "O"
-        if (Input.GetKeyDown(KeyCode.O))
+        if (HasActiveObjetives() && Input.GetKeyDown(KeyCode.O))
         {
             ToggleObjectivesPanel();
         }
@@ -57,7 +60,7 @@ public class ObjectiveManager : MonoBehaviour
         if (!obj.isActive && !obj.isCompleted)
         {
             obj.isActive = true;
-            CreateObjectiveUI(obj);
+            ToggleObjectivesPanel();
         }
     }
 
@@ -71,33 +74,17 @@ public class ObjectiveManager : MonoBehaviour
         }
 
         Objective obj = allObjectives[index];
+        
         if (obj.isActive && !obj.isCompleted)
         {
             obj.isCompleted = true;
-            RemoveObjectiveUI(obj);
+            obj.isActive = false;
+            uiManager.MarkObjectiveCompleted(index);
+            ToggleObjectivesPanel();
         }
 
         StartCoroutine(CompletedObjectiveFeedback());
 
-    }
-
-    // Criar UI de um objetivo ativo
-    private void CreateObjectiveUI(Objective obj)
-    {
-        GameObject objUI = Instantiate(objectiveTextPrefab, objectivesContainer);
-        TextMeshProUGUI text = objUI.GetComponent<TextMeshProUGUI>();
-        text.text = "- " + obj.title;
-        activeObjectivesUI.Add(obj, objUI);
-    }
-
-    // Remover UI de um objetivo completado
-    private void RemoveObjectiveUI(Objective obj)
-    {
-        if (activeObjectivesUI.ContainsKey(obj))
-        {
-            Destroy(activeObjectivesUI[obj]);
-            activeObjectivesUI.Remove(obj);
-        }
     }
 
     private IEnumerator CompletedObjectiveFeedback()
@@ -105,5 +92,18 @@ public class ObjectiveManager : MonoBehaviour
         completedObjectivePanel.SetActive(true);
         yield return new WaitForSeconds(3);
         completedObjectivePanel.SetActive(false);
+    }
+
+    private bool HasActiveObjetives()
+    {
+        foreach(var objective in allObjectives)
+        {
+            if (objective.isActive == true) 
+                return true;
+        }
+
+        objectivesPanel.SetActive(false);
+
+        return false;
     }
 }
