@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6916375578935878173}
   - component: {fileID: 8130656440931422197}
   - component: {fileID: 8662993173062979444}
+  - component: {fileID: -4809377313110164191}
   m_Layer: 0
   m_Name: SilverKey
   m_TagString: Untagged
@@ -144,3 +145,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &-4809377313110164191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7337548218739265755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e0f1be9d4ed7a47a171367f639f952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndicatorPrefab: {fileID: 28627873400515032, guid: 64722dea683ead342bdfc61593d4a90a, type: 3}

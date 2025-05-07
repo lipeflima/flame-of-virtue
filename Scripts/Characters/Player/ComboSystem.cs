@@ -42,7 +42,6 @@ public class ComboSystem : MonoBehaviour
 
     public void AddHit(float amount)
     {
-        //if(currentHit + amount <= maxHit)
         currentHit += amount; 
         RestartDecayTimer();
         UpdateUI();       
@@ -119,8 +118,9 @@ public class ComboSystem : MonoBehaviour
 
     void UpdateMaxHit()
     {
-        float growthRate = 1.5f;
-        maxHit = Mathf.RoundToInt((baseHit + multiplierCount * 20f) * Mathf.Pow(growthRate, multiplierCount));
+        int baseValue = 30;
+        int prime = MathOperations.GetNthPrime(multiplierCount); // Obtém o enésimo número primo
+        maxHit = baseValue * prime;
         comboBar.maxValue = maxHit;
     }
 

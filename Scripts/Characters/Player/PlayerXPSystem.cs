@@ -21,8 +21,6 @@ public class PlayerXP : MonoBehaviour
 
     public void AddXP(int amount)
     {
-        int multiplier = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<ComboSystem>().GetMultiplier();  
-        amount *=  multiplier;
         currentXP += amount;
 
         while (currentXP >= xpToNextLevel && currentLevel < 10)

@@ -10,6 +10,7 @@ public class ItemColetavel : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             CheckItem(other);
+            GetComponent<ItemIndicator>().ShowItemIndicator(itemName, (int)amount);
         }
     }
     void CheckItem(Collider2D other)

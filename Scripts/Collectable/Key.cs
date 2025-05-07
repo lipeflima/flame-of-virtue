@@ -10,6 +10,7 @@ public class Key : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerInventory inventory = other.GetComponent<PlayerInventory>();
+
             if (inventory != null)
             {
                 switch(keyType)

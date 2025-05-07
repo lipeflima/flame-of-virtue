@@ -23,6 +23,7 @@ public class HordeRoomManager : MonoBehaviour
     public TMP_Text totalActiveEnemiesText;
     public TMP_Text activeEnemiesText;
     public GameObject hordCountUI;
+    public GameObject enemyIndicatorUI;
 
     void Start()
     {
@@ -32,24 +33,37 @@ public class HordeRoomManager : MonoBehaviour
 
     void Update()
     {
-        if (playerInside && !spawningHorde && activeEnemies.Count == 0)
+        if (playerInside)
         {
-            if (currentHordeIndex < hordes.Count)
+            if (!spawningHorde && activeEnemies.Count == 0)
             {
-                StartCoroutine(SpawnHorde(hordes[currentHordeIndex]));
+                if (currentHordeIndex < hordes.Count)
+                {
+                    StartCoroutine(SpawnHorde(hordes[currentHordeIndex]));
+                }
+                else
+                {
+                    hordCountUI.SetActive(false);
+                    // Todas hordas derrotadas, liberar a barreira
+                    SetBarriers(false);
+                    gameObject.SetActive(false);
+                }
             }
-            else
+
+            // Limpa inimigos mortos da lista
+            activeEnemies.RemoveAll(enemy => enemy == null);
+
+            activeEnemiesText.text = "" + activeEnemies.Count;
+
+            if (!spawningHorde)
             {
-                // Todas hordas derrotadas, liberar a barreira
-                SetBarriers(false);
-                hordCountUI.SetActive(false);
+                if (activeEnemies.Count <= 5)
+                {
+                    enemyIndicatorUI.SetActive(true); 
+                    enemyIndicatorUI.GetComponent<EnemyIndicator>().SetTrackedEnemies(activeEnemies);
+                }
             }
         }
-
-        // Limpa inimigos mortos da lista
-        activeEnemies.RemoveAll(enemy => enemy == null);
-
-        activeEnemiesText.text = "" + activeEnemies.Count;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

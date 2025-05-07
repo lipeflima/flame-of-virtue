@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5073655219451921778}
   - component: {fileID: 7587400814731218916}
   - component: {fileID: -5455121059654101491}
+  - component: {fileID: 3265696402458706817}
   m_Layer: 0
   m_Name: BlueOrbe
   m_TagString: Untagged
@@ -136,3 +137,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.075
+--- !u!114 &3265696402458706817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371965857065180648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e0f1be9d4ed7a47a171367f639f952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndicatorPrefab: {fileID: 28627873400515032, guid: 64722dea683ead342bdfc61593d4a90a, type: 3}
