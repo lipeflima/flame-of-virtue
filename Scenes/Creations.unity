@@ -341,10 +341,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 20
     m_Right: 0
-    m_Top: 10
+    m_Top: 4
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 10
+  m_Spacing: 4
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ae7f276dd861c498828f160997cb64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectiveItemPrefab: {fileID: 2014683936874230401, guid: 6aef13081e083eb4da2dedefabb5dd22, type: 3}
+  objectiveItemPrefab: {fileID: 439521106096602975, guid: c2d7e644a8665fd4f8e989018e4f910b, type: 3}
   objectivesParent: {fileID: 268184514}
 --- !u!1 &453314446
 GameObject:

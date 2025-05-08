@@ -32,7 +32,7 @@ public class ObjectiveManager : MonoBehaviour
     private void Update()
     {
         // Verifica se o jogador apertou a tecla "O"
-        if (HasActiveObjetives() && Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             ToggleObjectivesPanel();
         }
@@ -60,7 +60,7 @@ public class ObjectiveManager : MonoBehaviour
         if (!obj.isActive && !obj.isCompleted)
         {
             obj.isActive = true;
-            ToggleObjectivesPanel();
+            objectivesPanel.SetActive(true);
         }
     }
 
@@ -80,7 +80,7 @@ public class ObjectiveManager : MonoBehaviour
             obj.isCompleted = true;
             obj.isActive = false;
             uiManager.MarkObjectiveCompleted(index);
-            ToggleObjectivesPanel();
+            objectivesPanel.SetActive(true);
         }
 
         StartCoroutine(CompletedObjectiveFeedback());
