@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class RangedJumper : MonoBehaviour
@@ -7,57 +7,79 @@ public class RangedJumper : MonoBehaviour
     [Header("Referências")]
     public Transform player;
     public GameObject projectilePrefab;
-    public Transform model; // modelo visual
-    public SpriteRenderer spriteRenderer; // opcional: flip do sprite
+    public Transform model;
+    public SpriteRenderer spriteRenderer;
 
     [Header("Parâmetros de Ataque")]
     public float attackRange = 6f;
     public float attackCooldown = 2f;
     private float lastAttackTime;
-    private float viewRange = 20f;
-    private float chaseSpeed = 3f;
     public float waitInitialTime = 0.2f;
 
-    [Header("Distância Crítica para Pulo")]
-    public bool canJump = false;
+    [Header("Visão e Movimento")]
+    public float viewRange = 20f;
+    public float chaseSpeed = 3f;
+
+    [Header("Pulo")]
+    public bool canJump = true;
     public float dangerRange = 2f;
     public float safeDistanceMin = 3f;
     public float safeDistanceMax = 5f;
-    public float jumpDelay = 2f;
+    public float jumpDelay = 0.5f;
     public float jumpSpeed = 10f;
+    public float maxJumpDuration = 1.5f;
+    public LayerMask obstacleLayer;
 
     private bool isPreparingJump = false;
     private bool isJumping = false;
-    private Vector2 jumpTarget;
+    private Vector3 jumpTarget;
+    private float jumpDurationTimer = 0f;
 
     public Animator anim;
     private PlayerController controller;
+    private NavMeshAgent agent;
 
     void Start()
     {
         SetAnimations("Idle");
         controller = PlayerController.Instance;
         player = controller.transform;
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false; // fundamental para 2D
+        agent.speed = chaseSpeed;
     }
 
     void Update()
     {
+        if (isJumping)
+        {
+            jumpDurationTimer -= Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, jumpTarget, jumpSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, jumpTarget) < 0.1f || jumpDurationTimer <= 0f)
+            {
+                isJumping = false;
+                SetAnimations("Idle");
+            }
+            return;
+        }
+
         if (player == null) return;
 
-        LookAtPlayer(); // sempre olha pro player
-
+        LookAtPlayer();
         float distance = Vector2.Distance(transform.position, player.position);
 
-        if (distance <= dangerRange && !isPreparingJump && !isJumping)
+        if (distance <= dangerRange && !isPreparingJump)
         {
             if (canJump)
             {
                 StartCoroutine(PrepareJump());
                 return;
-            } 
+            }
         }
 
-        if (distance <= attackRange && !isPreparingJump && !isJumping)
+        if (distance <= attackRange && !isPreparingJump)
         {
             TryAttack();
         }
@@ -66,15 +88,57 @@ public class RangedJumper : MonoBehaviour
         {
             MoveTowards(player.position, chaseSpeed);
         }
+    }
 
-        if (isJumping)
+    IEnumerator PrepareJump()
+    {
+        isPreparingJump = true;
+        yield return new WaitForSeconds(jumpDelay);
+
+        int attempts = 10;
+        bool found = false;
+
+        for (int i = 0; i < attempts; i++)
         {
-            transform.position = Vector2.MoveTowards(transform.position, jumpTarget, jumpSpeed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, jumpTarget) < 0.1f)
+            Vector2 awayDir = (transform.position - player.position).normalized;
+            Vector2 randomDir = Quaternion.Euler(0, 0, Random.Range(-90f, 90f)) * awayDir;
+            float distance = Random.Range(safeDistanceMin, safeDistanceMax);
+            Vector3 tentativePoint = transform.position + (Vector3)(randomDir.normalized * distance);
+
+            if (NavMesh.SamplePosition(tentativePoint, out NavMeshHit hit, 1f, NavMesh.AllAreas))
             {
-                isJumping = false;
+                float distToTarget = Vector3.Distance(transform.position, hit.position);
+
+                RaycastHit2D hitObstacle = Physics2D.Raycast(
+                    transform.position,
+                    (hit.position - transform.position).normalized,
+                    distToTarget,
+                    obstacleLayer
+                );
+
+                Debug.DrawRay(transform.position, (hit.position - transform.position).normalized * distToTarget, Color.red, 1f);
+
+                if (hitObstacle.collider == null && distToTarget <= safeDistanceMax)
+                {
+                    jumpTarget = hit.position;
+                    isJumping = true;
+                    jumpDurationTimer = maxJumpDuration;
+                    SetAnimations("Jump");
+                    found = true;
+                    break;
+                }
             }
+
+            yield return null;
         }
+
+        if (!found)
+        {
+            Debug.Log("Pulo cancelado: nenhum ponto seguro encontrado.");
+            SetAnimations("Idle");
+        }
+
+        isPreparingJump = false;
     }
 
     void LookAtPlayer()
@@ -103,7 +167,6 @@ public class RangedJumper : MonoBehaviour
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             projectile.GetComponent<SimpleProjectile>().Initialize(direction);
 
-            // Rotaciona o projétil para apontar visualmente na direção
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
 
@@ -111,35 +174,10 @@ public class RangedJumper : MonoBehaviour
         }
     }
 
-
     void MoveTowards(Vector2 target, float speed)
     {
         SetAnimations("Moving");
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-    }
-
-    IEnumerator PrepareJump()
-    {
-        isPreparingJump = true;
-
-        yield return new WaitForSeconds(jumpDelay);
-
-        Vector2 awayFromPlayer = (transform.position - player.position).normalized;
-        float randomDistance = Random.Range(safeDistanceMin, safeDistanceMax);
-        jumpTarget = (Vector2)transform.position + awayFromPlayer * randomDistance;
-
-        isJumping = true;
-        isPreparingJump = false;
-        SetAnimations("Jump");
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PlayerAttack"))
-        {
-            EnemyHP enemy = GetComponent<EnemyHP>();
-            enemy.TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
-        }
     }
 
     void SetAnimations(string animBoolName)
@@ -149,5 +187,14 @@ public class RangedJumper : MonoBehaviour
         anim.SetBool("Jump", false);
         anim.SetBool("Idle", false);
         anim.SetBool(animBoolName, true);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerAttack"))
+        {
+            EnemyHP enemy = GetComponent<EnemyHP>();
+            enemy.TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
+        }
     }
 }

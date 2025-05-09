@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Dasher : MonoBehaviour
 {
@@ -29,12 +30,17 @@ public class Dasher : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Color originalColor;
     [SerializeField] private Color rageColor = new Color(1f, 0.3f, 0.3f);
+    private NavMeshAgent agent;
     
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         originalColor = spriteRenderer.color;
+
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     void Update()
@@ -88,6 +94,7 @@ public class Dasher : MonoBehaviour
             case State.Dashing:
                 if (dashTimer > 0f)
                 {
+                    agent.isStopped = true; // Desativa pathfinding
                     transform.position += (Vector3)(dashDirection * dashSpeed * Time.deltaTime);
                     dashTimer -= Time.deltaTime;
                     spriteRenderer.color = rageColor;
@@ -98,6 +105,7 @@ public class Dasher : MonoBehaviour
                     isDashing = false;
                     cooldownTimer = dashCooldown;
                     currentState = State.Chasing;
+                    dashTimer -= Time.deltaTime;
                     spriteRenderer.color = originalColor;
                     anim.SetBool("Dashing", false);
                 }
@@ -123,7 +131,9 @@ public class Dasher : MonoBehaviour
     // Movimento simples com MoveTowards
     void MoveTowards(Vector2 target, float speed)
     {
-        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        agent.isStopped = false;
+        agent.speed = speed;
+        agent.SetDestination(target);
     }
 
     void OnTriggerStay2D(Collider2D other)
