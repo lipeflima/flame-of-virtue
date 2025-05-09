@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 33251834107579305}
   - component: {fileID: 8050177458354121279}
   - component: {fileID: 1826281843256688808}
+  - component: {fileID: 3795107287059002401}
   m_Layer: 8
   m_Name: Dasher
   m_TagString: Enemy
@@ -136,12 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3785827ed494fc34db0eb989d546ffeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationRange: 12
-  attackRange: 5
+  activationRange: 20
+  attackRange: 6
   chaseSpeed: 4
   dashSpeed: 10
   dashDuration: 1
-  dashCooldown: 3
+  dashCooldown: 4
   anim: {fileID: 1698747486680650053}
   model: {fileID: 0}
   cooldown: 4
@@ -160,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 120
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   itemDrops:
   - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
@@ -182,6 +183,28 @@ MonoBehaviour:
   corDano: {r: 1, g: 0.3, b: 0.3, a: 1}
   duracaoDano: 0.2
   damagePrefab: {fileID: 3572996435674399641, guid: 52724add97f49d24fa5fd8863ec0061c, type: 3}
+--- !u!195 &3795107287059002401
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407735022304433266}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.4414063
+  m_Speed: 6
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8619516106217527106
 GameObject:
   m_ObjectHideFlags: 0

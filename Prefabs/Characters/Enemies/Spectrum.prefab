@@ -117,10 +117,10 @@ GameObject:
   - component: {fileID: 8321273254978644077}
   - component: {fileID: 3985076451634636286}
   - component: {fileID: 1543388589768512510}
-  - component: {fileID: 1887119195824601412}
-  - component: {fileID: 5757896393237186211}
   - component: {fileID: 5578262201623633690}
   - component: {fileID: 5901789814560118992}
+  - component: {fileID: 9075236544186024720}
+  - component: {fileID: 4830626985382077084}
   m_Layer: 8
   m_Name: Spectrum
   m_TagString: Enemy
@@ -225,59 +225,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.030828476, y: -0.010277033}
   m_Size: {x: 2.0276375, y: 2.965983}
   m_Direction: 0
---- !u!50 &1887119195824601412
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5174975635973986042}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &5757896393237186211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5174975635973986042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c3de392acae14429a2f01a21593bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseSpeed: 1.9
-  dashSpeed: 6.7
-  detectionRange: 11
-  dashCooldown: 2.4
-  dashDuration: 0.7
-  damage: 1
-  model: {fileID: 0}
-  spriteRenderer: {fileID: 7177835169702465441}
 --- !u!114 &5578262201623633690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,3 +265,42 @@ MonoBehaviour:
   corDano: {r: 1, g: 0.3, b: 0.3, a: 1}
   duracaoDano: 0.2
   damagePrefab: {fileID: 3572996435674399641, guid: 52724add97f49d24fa5fd8863ec0061c, type: 3}
+--- !u!195 &9075236544186024720
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174975635973986042}
+  m_Enabled: 1
+  m_AgentTypeID: 1479372276
+  m_Radius: 1.33
+  m_Speed: 4
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.93
+  m_BaseOffset: 1.42
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &4830626985382077084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174975635973986042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb51ba21ddb6ff4abdfc3dd9d9b1bd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseSpeed: 4
+  MoveSpeed: 3
+  damage: 3
+  cooldown: 2
+  Target: {fileID: 0}

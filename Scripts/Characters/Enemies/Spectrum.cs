@@ -1,26 +1,33 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Spectrum : MonoBehaviour
 {
     public float BaseSpeed = 2f;
-    private float MoveSpeed;
-    private Transform Target;
-    private int damage = 1;
+    public float MoveSpeed = 3f;
+    public int damage = 1;
+    public float cooldown = 1f;
+    private float nextDamageTime;
+
+    public Transform Target;
+    private NavMeshAgent agent;
     private EnergySystem energia;
-    private bool colidido = false;
-    public float cooldown = 2f; // Tempo entre danos
-    public float nextDamageTime = 0f;
+    private bool colidido;
 
     void Start()
     {
         Target = GameObject.FindGameObjectWithTag("Player").transform;
         MoveSpeed = BaseSpeed + Random.Range(-0.5f, 0.5f);
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, Target.position, MoveSpeed * Time.deltaTime);   
+        if (Target == null) return;
+
+        agent.SetDestination(Target.position);
 
         if (colidido && Time.time > nextDamageTime)
         {
