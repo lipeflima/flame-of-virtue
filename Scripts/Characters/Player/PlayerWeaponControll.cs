@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWeaponControll : MonoBehaviour
 {
-    public WeaponType weaponType;
     private bool shooting;
     float nextTimeToShoot;
     Vector3 shootDirection;
@@ -12,13 +9,6 @@ public class PlayerWeaponControll : MonoBehaviour
     public Transform model { get; private set; }
     private PlayerController controller;
     [SerializeField] private WeaponData wData;
-
-    public enum WeaponType
-    {
-        Burst,
-        Automatic,
-        Manual,
-    }
 
     void Start()
     {
@@ -32,15 +22,12 @@ public class PlayerWeaponControll : MonoBehaviour
 
     private void StartShooting()
     {
-        if (weaponType == WeaponType.Automatic)
+        if (Time.time >= nextTimeToShoot)
         {
-            if (Time.time >= nextTimeToShoot)
-            {
-                nextTimeToShoot = Time.time + 1f / wData.fireRate;
-                shooting = true;
+            nextTimeToShoot = Time.time + 1f / wData.fireRate;
+            shooting = true;
 
-                FireWeapon();
-            }
+            FireWeapon();
         }
     }
 
