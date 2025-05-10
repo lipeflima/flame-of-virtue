@@ -14,7 +14,7 @@ public class PlayerProjectile : MonoBehaviour
         if(canMove) transform.Translate(transform.right * speed * Time.deltaTime, Space.World);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
