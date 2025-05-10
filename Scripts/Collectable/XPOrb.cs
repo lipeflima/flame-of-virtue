@@ -24,8 +24,8 @@ public class XPOrb : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerXP>().AddXP(xpAmount);
-            int multiplier = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<ComboSystem>().GetMultiplier(); 
+            int multiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<ComboSystem>().GetMultiplier(); 
+            other.GetComponent<PlayerXP>().AddXP(xpAmount*multiplier);
             GetComponent<ItemIndicator>().ShowItemIndicator("XP", xpAmount*multiplier);
             Destroy(gameObject);
         }

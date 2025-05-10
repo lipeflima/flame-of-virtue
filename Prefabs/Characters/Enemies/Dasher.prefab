@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8668ca1595f822b44847ae11a66cda38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 120
+  health: 60
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
   goldPrefab: {fileID: 5357957677602817075, guid: 1197544368346d345ad293616c5facaf, type: 3}
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}

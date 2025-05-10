@@ -47,7 +47,7 @@ public class PlayerXP : MonoBehaviour
 
     private void LevelUp()
     {
-        currentXP -= xpToNextLevel;
+        // currentXP -= xpToNextLevel;
         currentLevel++;
         ApplyLevelUpBonuses();
         xpToNextLevel = GetXPToLevel(currentLevel);
