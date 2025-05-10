@@ -142,7 +142,7 @@ public class GuardPatroll : MonoBehaviour
         if (collision.CompareTag("PlayerAttack"))
         {
             EnemyHP enemy = GetComponent<EnemyHP>();
-            enemy.TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
+            // enemy.TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
         }
     }
 }

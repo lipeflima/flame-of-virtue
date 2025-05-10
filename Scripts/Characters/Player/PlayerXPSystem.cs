@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerXP : MonoBehaviour
 {
+    public PlayerData playerData;
     public int currentLevel = 1;
     public int currentXP = 0;
     public int xpToNextLevel;

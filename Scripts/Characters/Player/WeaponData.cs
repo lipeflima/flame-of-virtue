@@ -7,37 +7,35 @@ using UnityEngine.UI;
 
 public class WeaponData : ScriptableObject
 {
+    public string projectileName;
     public float damage = 20f;
-    public float shootRate = 1;
+    public float fireRate = 1;
     public float projectileSpeed = 150;
-    public float projectileforce = 800;
     public float projectilesToSpawn = 1;
     public float projectileDistance = 1;
     public float recoilOffsetX = 1;
     public float recoilOffsetY = 1;
-    public float magazineSize = 30;
-    public float reloadTime = 1;
-    public float recoilFactor = 50f;
-    public float coolDownRate = 5;
-    public float triggerReleaseTime = 0.25f;
+    public float recoilFactor = 50;
     public Vector3 spawnPoint;
-    public Vector3 mfPoint;
     public GameObject projectile;
-    public GameObject muzzleFlash;
-    public GameObject bulletCapsulePrefab;
     public GameObject shootSoundPrefab;
     public GameObject special;
 
-    public enum WeaponMode
-    {
-        Manual,
-        Automatic,
-        BurstFire
-    }
     public enum ShootType
     {
         Raycast,
         Instantiation,
         Pooling
     }
+
+    [Header("Modificadores dinâmicos")]
+    public float damageMultiplier = 1f;
+    public float speedMultiplier = 1f;
+    public float fireRateMultiplier = 1f;
+    public float projectileDistanceMultiplier = 1f;
+
+    public float EffectiveDamage => damage * damageMultiplier;
+    public float EffectiveSpeed => projectileSpeed * speedMultiplier;
+    public float EffectiveFireRate => fireRate * fireRateMultiplier;
+    public float EffectiveProjectileDistance => projectileDistance * projectileDistanceMultiplier;
 }

@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class ComboSystem : MonoBehaviour
 {
+    public PlayerData playerData;
     private float currentHit;
-    public float baseHit = 100f;
+    public float baseHit = 30f;
     private float maxHit = 100f;
     private bool canUseSpecial = false;
     public Slider comboBar;
@@ -118,9 +119,8 @@ public class ComboSystem : MonoBehaviour
 
     void UpdateMaxHit()
     {
-        int baseValue = 30;
         int prime = MathOperations.GetNthPrime(multiplierCount); // Obtém o enésimo número primo
-        maxHit = baseValue * prime;
+        maxHit = baseHit * prime;
         comboBar.maxValue = maxHit;
     }
 

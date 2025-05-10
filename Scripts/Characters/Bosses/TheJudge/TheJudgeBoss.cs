@@ -227,7 +227,7 @@ public class TheJudgeBoss : MonoBehaviour
     {
         if (collision.CompareTag("PlayerAttack"))
         {
-            TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
+            // TakeDamage(collision.gameObject.GetComponent<PlayerProjectile>().damage);
         }
     }
 

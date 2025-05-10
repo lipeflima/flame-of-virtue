@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class XPOrb : MonoBehaviour
 {
+    public PlayerData playerData;
     public int xpAmount = 1;
     public float moveSpeed = 5f;
     public float triggerDistance = 8f;
