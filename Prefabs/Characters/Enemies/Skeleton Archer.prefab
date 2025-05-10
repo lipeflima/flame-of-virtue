@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5000073982893372065}
   - component: {fileID: 5788491109676180903}
   - component: {fileID: 7077387884188678461}
+  - component: {fileID: 3508065300526620717}
   m_Layer: 8
   m_Name: Skeleton Archer
   m_TagString: Enemy
@@ -255,9 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 60
   xpOrbPrefab: {fileID: 8371965857065180648, guid: 47410456fff090b4b95bd36d1d8f64d9, type: 3}
-  itemDrops:
-  - {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
-  dropChance: 0.15
+  goldPrefab: {fileID: 5357957677602817075, guid: 1197544368346d345ad293616c5facaf, type: 3}
   hitEffect: {fileID: 2058229067824278280, guid: 4a456f9e66869aa4faaa3420fd32c852, type: 3}
 --- !u!114 &5788491109676180903
 MonoBehaviour:
@@ -297,6 +296,21 @@ NavMeshAgent:
   m_BaseOffset: 0.32
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3508065300526620717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841616547968000663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14b8712beab4b34f891d1ab554983e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleLoot:
+  - itemPrefab: {fileID: 2352271590326578057, guid: 544d37752debf054ea1a886c593bbe46, type: 3}
+    dropChance: 0.003
 --- !u!1 &7071165037933000752
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,22 @@ public class ItemColetavel : MonoBehaviour
 {
     public string itemName;
     public float amount = 10f; // Quantidade de energia que o item recupera
+    public float moveSpeed = 5f;
+    public float triggerDistance = 8f;
+    private Transform player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    void Update()
+    {
+        if (Vector2.Distance(transform.position, player.position) < triggerDistance)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

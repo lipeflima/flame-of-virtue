@@ -11,12 +11,18 @@ public class PlayerXP : MonoBehaviour
     public Image xpBarFill;
     public TMP_Text currentXpText;
     public TMP_Text xpToNextLevelText;
+    public TMP_Text currentLevelText;
     public LevelUpManager levelUpManager;
 
     void Start()
     {
         xpToNextLevel = GetXPToLevel(currentLevel);
         UpdateXPBar();
+    }
+
+    void Update()
+    {
+        currentLevelText.text = "" + currentLevel;    
     }
 
     public void AddXP(int amount)
@@ -26,8 +32,6 @@ public class PlayerXP : MonoBehaviour
         while (currentXP >= xpToNextLevel && currentLevel < 10)
         {
             LevelUp();
-            // UnlockSkills();
-            // Aqui você pode adicionar efeitos, som, etc.
         }
 
         UpdateXPBar();
@@ -45,6 +49,7 @@ public class PlayerXP : MonoBehaviour
     {
         currentXP -= xpToNextLevel;
         currentLevel++;
+        ApplyLevelUpBonuses();
         xpToNextLevel = GetXPToLevel(currentLevel);
         levelUpManager.ShowText(gameObject.transform);
         levelUpManager.PlayLevelUpEffect();
@@ -55,13 +60,19 @@ public class PlayerXP : MonoBehaviour
         return Mathf.FloorToInt(100 * Mathf.Pow(level, 1.5f));
     }
 
-    /* void UnlockSkills()
+    private void ApplyLevelUpBonuses()
     {
-        switch (currentLevel)
+        int bonusHP = Mathf.FloorToInt(50 + (currentLevel * 25)); // Exemplo: crescimento progressivo
+        EnergySystem health = GetComponent<EnergySystem>();
+
+        if (health != null)
         {
-            case 2:
-                FireBallSkill.instance.SetFireBallSkill(true);
-                break;
+            health.IncreaseMaxHealth(bonusHP);
+            health.RestoreToMax(); // opcional, cura ao subir de nível
         }
-    } */
+
+        // Aqui você pode adicionar outros bônus facilmente futuramente, ex:
+        // IncreaseDamage(1);
+        // IncreaseMoveSpeed(0.1f);
+    }
 }

@@ -85,6 +85,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Gold
   amount: 2
+  moveSpeed: 16
+  triggerDistance: 14
 --- !u!114 &577110286125032607
 MonoBehaviour:
   m_ObjectHideFlags: 0

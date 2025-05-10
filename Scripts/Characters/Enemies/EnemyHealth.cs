@@ -4,22 +4,25 @@ public class EnemyHP : MonoBehaviour
 {
     [SerializeField] private float health = 30f;
     public GameObject xpOrbPrefab;
-    public GameObject[] itemDrops; 
-    [Range(0f, 1f)] public float dropChance = 0.25f;
+    public GameObject goldPrefab;
     private PlayerController controller;
     public GameObject hitEffect;
+
+    private LootDropper lootDropper;
 
     void Start()
     {
         controller = PlayerController.Instance;
+        lootDropper = GetComponent<LootDropper>();
     }
 
     public void TakeDamage(float amount)
     {
         int multiplier = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<ComboSystem>().GetMultiplier();  
-        amount *=  multiplier;
+        amount *= multiplier;
         health -= amount;
-        gameObject.GetComponent<DamageIndicator>().MostrarIndicadorDeDano(amount);
+
+        GetComponent<DamageIndicator>().MostrarIndicadorDeDano(amount);
         controller.comboSystem.AddHit(amount);
         Instantiate(hitEffect, transform.position, transform.rotation);
 
@@ -32,22 +35,29 @@ public class EnemyHP : MonoBehaviour
     private void Die()
     {
         DropXP();
-        TryDropItem();
+        DropGold();
+
+        if (lootDropper != null)
+        {
+            lootDropper.DropLoot(transform.position);
+        }
+
         Destroy(gameObject);
     }
 
     void DropXP()
     {
-        Instantiate(xpOrbPrefab, transform.position, Quaternion.identity);
+        Vector2 randomOffset = Random.insideUnitCircle * 0.5f; // raio de até 0.5 unidades
+        Vector3 dropPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0f);
+
+        Instantiate(xpOrbPrefab, dropPosition, Quaternion.identity);
     }
 
-    void TryDropItem()
+    void DropGold()
     {
-        if (itemDrops.Length == 0) return;
-        if (Random.value <= dropChance)
-        {
-            int randomIndex = Random.Range(0, itemDrops.Length);
-            Instantiate(itemDrops[randomIndex], transform.position, Quaternion.identity);
-        }
+        Vector2 randomOffset = Random.insideUnitCircle * 0.5f; // raio de até 0.5 unidades
+        Vector3 dropPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0f);
+        
+        Instantiate(goldPrefab, dropPosition, Quaternion.identity);
     }
 }

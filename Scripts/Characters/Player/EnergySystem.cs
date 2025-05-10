@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class EnergySystem : MonoBehaviour
     public float currentEnergy;
     private float energyDrainRate = 100f / 300f; // 100 unidades em 5 min (300 segundos)
     private bool alive, damaged;
+    public TMP_Text curEnergyDisplay;
+    public TMP_Text maxEnergyDisplay;
 
     void Start()
     {
@@ -48,6 +51,9 @@ public class EnergySystem : MonoBehaviour
         {
             energyBar.color = new Color(0.93f, 0.29f, 0.34f); // Vermelho
         }
+
+        curEnergyDisplay.text = (int)currentEnergy + " / ";
+        maxEnergyDisplay.text = (int)maxEnergy + "";
     }
 
     public void AddEnergy(float amount)
@@ -70,5 +76,16 @@ public class EnergySystem : MonoBehaviour
     public bool GetDamagedStatus()
     {
         return damaged;
+    }
+
+    public void IncreaseMaxHealth(int amount)
+    {
+        maxEnergy += amount;
+        currentEnergy += amount; // ou mantenha o mesmo valor atual
+    }
+
+    public void RestoreToMax()
+    {
+        currentEnergy = maxEnergy;
     }
 }
