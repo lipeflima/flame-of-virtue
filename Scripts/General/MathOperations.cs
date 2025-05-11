@@ -9,6 +9,7 @@ public static class MathOperations
 
         while (true)
         {
+            if (n <= 1) return 1;
             if (IsPrime(number))
             {
                 count++;

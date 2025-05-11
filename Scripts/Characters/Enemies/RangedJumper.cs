@@ -134,7 +134,6 @@ public class RangedJumper : MonoBehaviour
 
         if (!found)
         {
-            Debug.Log("Pulo cancelado: nenhum ponto seguro encontrado.");
             SetAnimations("Idle");
         }
 

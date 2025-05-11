@@ -48,7 +48,6 @@ public class PlayerXP : MonoBehaviour
 
     private void LevelUp()
     {
-        // currentXP -= xpToNextLevel;
         currentLevel++;
         ApplyLevelUpBonuses();
         xpToNextLevel = GetXPToLevel(currentLevel);
@@ -58,7 +57,7 @@ public class PlayerXP : MonoBehaviour
 
     int GetXPToLevel(int level)
     {
-        return Mathf.FloorToInt(100 * Mathf.Pow(level, 1.5f));
+        return Mathf.FloorToInt((level * 30) + Mathf.Pow(level, 2.2f) * 5);
     }
 
     private void ApplyLevelUpBonuses()

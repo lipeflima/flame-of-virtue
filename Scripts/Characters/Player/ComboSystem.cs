@@ -8,7 +8,7 @@ public class ComboSystem : MonoBehaviour
     public PlayerData playerData;
     private float currentHit;
     public float baseHit = 30f;
-    private float maxHit = 100f;
+    public float maxHit = 30f;
     private bool canUseSpecial = false;
     public Slider comboBar;
     // HEADER Multiplier
@@ -145,6 +145,7 @@ public class ComboSystem : MonoBehaviour
     public void ResetMultiplier()
     {
         currentHit = 0;
+        maxHit = baseHit;
         multiplierCount = 1;
         UpdateUI();
         multiplierTimerBar.gameObject.SetActive(false); // esconde a barra

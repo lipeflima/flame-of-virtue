@@ -21,6 +21,7 @@ public class PlayerProjectile : MonoBehaviour
             colidiu = true;
             EnemyHP enemy = collision.gameObject.GetComponent<EnemyHP>();
             enemy.TakeDamage(damage);
+            DestroyProjectile();
         }
 
         if (collision.gameObject.CompareTag("Breakable"))
@@ -29,14 +30,19 @@ public class PlayerProjectile : MonoBehaviour
             {
                 collision.gameObject.GetComponent<DamageableObject>().SetDamage(damage);
             }
+
+            DestroyProjectile();
         }        
-        
-        SpawnEffects();
-        if(destroy) Destroy(gameObject);
     }
 
-    void SpawnEffects()
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        DestroyProjectile();
+    }
+
+    void DestroyProjectile()
     {
         if(hitEffect != null) Instantiate(hitEffect, transform.position, transform.rotation);
+        if(destroy) Destroy(gameObject);
     }
 }

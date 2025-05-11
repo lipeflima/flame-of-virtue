@@ -9,6 +9,7 @@ public class EnemyHP : MonoBehaviour
     public GameObject hitEffect;
 
     private LootDropper lootDropper;
+    public SpawnableEnemy sourceData;
 
     void Start()
     {
@@ -41,6 +42,9 @@ public class EnemyHP : MonoBehaviour
         {
             lootDropper.DropLoot(transform.position);
         }
+
+        if (sourceData != null)
+            sourceData.currentCount--;
 
         Destroy(gameObject);
     }
