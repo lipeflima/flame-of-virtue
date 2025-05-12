@@ -9,11 +9,6 @@ public class PlayerProjectile : MonoBehaviour
     public bool canMove, destroy;
     public GameObject hitEffect;
 
-    void Update()
-    {
-        if(canMove) transform.Translate(transform.right * speed * Time.deltaTime, Space.World);
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))

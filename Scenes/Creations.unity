@@ -18178,7 +18178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decc7b5abce61a948afc1e1d1b029f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTime: 300
+  totalTime: 1500
   difficultyBar: {fileID: 809986046}
   difficultyColor:
     serializedVersion: 2

@@ -24,7 +24,7 @@ public class PlayerWeaponControll : MonoBehaviour
     {
         if (Time.time >= nextTimeToShoot)
         {
-            nextTimeToShoot = Time.time + 1f / wData.fireRate;
+            nextTimeToShoot = Time.time + 1f / wData.EffectiveFireRate;
             shooting = true;
 
             FireWeapon();
