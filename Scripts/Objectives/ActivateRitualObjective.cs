@@ -7,9 +7,9 @@ public class ActivateRitualObjective : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inventory.HasFourElements()) 
+        /* if (inventory.HasFourElements()) 
         {
             ObjectiveManager.instance.ActivateObjective(4);
-        }
+        } */
     }
 }

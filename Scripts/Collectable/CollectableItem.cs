@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class ItemColetavel : MonoBehaviour
 {
+    public enum ItemType { Gem, GemFragment, Gold, Key, Energy }
+    public ItemType itemType;
     public string itemName;
-    public float amount = 10f; // Quantidade de energia que o item recupera
+    public float amount = 10f;
     public float moveSpeed = 5f;
     public float triggerDistance = 8f;
     private Transform player;
@@ -33,64 +35,47 @@ public class ItemColetavel : MonoBehaviour
     {
         PlayerInventory inventory = other.GetComponent<PlayerInventory>();
 
-        switch(itemName)
+        if (inventory != null)
         {
-            case "Energia":
-                EnergySystem energia = other.GetComponent<EnergySystem>();
+            switch(itemType)
+            {
+                case ItemType.Energy:
+                    EnergySystem energia = other.GetComponent<EnergySystem>();
 
-                if (energia != null)
-                {
-                    energia.AddEnergy(amount);
-                }
-            break;
+                    if (energia != null)
+                    {
+                        energia.AddEnergy(amount);
+                    }
+                break;
 
-            case "Gold":
-                if(inventory != null)
-                {
-                    inventory.AddGold(amount);
-                }           
-            break;
+                case ItemType.Gold:
+                    inventory.AddGold(amount);          
+                break;
+                case ItemType.Gem:
+                    GemSO gem = GetComponent<GemData>().gemData;
 
-            case "Dove":
-                ObjectiveManager.instance.CompleteObjective(0);
-                if(inventory != null)
-                {
-                    inventory.AddItem("Dove");
-                }
-            break;
+                    if (gem != null)
+                    {
+                        inventory.AddGem(gem);
+                    }
+                break;
+                case ItemType.GemFragment:
+                    GemSO gemParent = GetComponent<GemData>().gemData;
+                    if (gemParent != null)
+                    {
+                        GemFragment fragmentInstance = new GemFragment(gemParent, player.GetComponent<PlayerXP>().currentLevel);
+                        inventory.AddGemFragment(fragmentInstance);
+                    }
+                break;
+                default:
+                    inventory.AddItem(itemName);
+                break;
+            }
 
-            case "Water":
-                ObjectiveManager.instance.CompleteObjective(1);
-                if(inventory != null)
-                {
-                    inventory.AddItem("Water");
-                }
-            break;
-
-            case "Lamb":
-                ObjectiveManager.instance.CompleteObjective(2);
-                if(inventory != null)
-                {
-                    inventory.AddItem("Lamb");
-                }
-            break;
-
-            case "Heart":
-                ObjectiveManager.instance.CompleteObjective(3);
-                if(inventory != null)
-                {
-                    inventory.AddItem("Heart");
-                }
-            break;
-
-            case "BossKey":
-                if(inventory != null)
-                {
-                    inventory.AddItem("BossKey");
-                }
-            break;
+            Destroy(gameObject); // Remove o item do cenário
         }
-
-        Destroy(gameObject); // Remove o item do cenário
+        else {
+            Debug.Log("Inventario não existente!");
+        }
     }
 }

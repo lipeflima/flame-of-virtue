@@ -9,6 +9,8 @@ public class PlayerData : ScriptableObject
     public float baseDamage = 4f;
     public float specialCooldown = 5f;
     public float itemPickupRadius = 8f;
+    public int maxGemSlots = 1;
+    public int maxGemFragmentsPerSlot = 5;
 
     [Header("Sistema de Combo")]
     public int multiplierDecayDuration = 5;
@@ -19,4 +21,15 @@ public class PlayerData : ScriptableObject
 
     public float EffectiveDamage => baseDamage * damageModifier;
     public float EffectiveSpeed => moveSpeed * speedModifier;
+}
+
+public enum PlayerStat
+{
+    HP,
+    Speed,
+    CollectArea,
+    MultiplierDecay,
+    Dash,
+    GemSlots,
+    GemFragmentsPerSlot,
 }

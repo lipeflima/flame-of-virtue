@@ -16,19 +16,15 @@ public class Key : MonoBehaviour
                 switch(keyType)
                 {
                     case KeyType.RustedKey:
-                        inventory.hasRustedKey = true;
                         inventory.AddItem("RustedKey");
                     break;
                     case KeyType.SilverKey:
-                        inventory.hasSilverKey = true;
                         inventory.AddItem("SilverKey");
                     break;
                     case KeyType.GoldKey:
-                        inventory.hasGoldKey = true;
                         inventory.AddItem("GoldKey");
                     break;
                     case KeyType.BossKey:
-                        inventory.hasBossKey = true;
                         inventory.AddItem("BossKey");
                     break;
                 }

@@ -1,14 +1,12 @@
 using UnityEngine;
 
-public class PlayerWeaponControll : MonoBehaviour
+public class PlayeProjectileControll : MonoBehaviour
 {
-    private bool shooting;
     float nextTimeToShoot;
-    Vector3 shootDirection;
     public Transform spawn;
     public Transform model { get; private set; }
     private PlayerController controller;
-    [SerializeField] private WeaponData wData;
+    [SerializeField] private ProjectileControllData data;
 
     void Start()
     {
@@ -24,32 +22,28 @@ public class PlayerWeaponControll : MonoBehaviour
     {
         if (Time.time >= nextTimeToShoot)
         {
-            nextTimeToShoot = Time.time + 1f / wData.EffectiveFireRate;
-            shooting = true;
-
+            nextTimeToShoot = Time.time + 1f / data.EffectiveFireRate;
             FireWeapon();
         }
     }
 
     public void ShootSpecial()
     {
-        Instantiate(wData.special, transform.position, Quaternion.identity, transform);
+        Instantiate(data.special, transform.position, Quaternion.identity, transform);
         controller.comboSystem.UseSpecial();
     }
 
     void FireWeapon()
     {        
-        for (int i = 0; i < wData.projectilesToSpawn; i++)
+        for (int i = 0; i < data.projectilesToSpawn; i++)
         {
-            GameObject projectile = Instantiate(wData.projectile, spawn.transform.position + wData.spawnPoint + new Vector3(Random.Range(-wData.recoilOffsetX, wData.recoilOffsetX), Random.Range(-wData.recoilOffsetX, wData.recoilOffsetX), 0), spawn.rotation * Quaternion.Euler(0, 0, Random.Range(-wData.recoilOffsetY, wData.recoilOffsetY)));
+            GameObject projectile = Instantiate(data.projectile, spawn.transform.position + data.spawnPoint + new Vector3(Random.Range(-data.recoilOffsetX, data.recoilOffsetX), Random.Range(-data.recoilOffsetX, data.recoilOffsetX), 0), spawn.rotation * Quaternion.Euler(0, 0, Random.Range(-data.recoilOffsetY, data.recoilOffsetY)));
                   
             model = projectile.transform;
-            Instantiate(wData.shootSoundPrefab);
+            Instantiate(data.shootSoundPrefab);
             
             if (controller.isFacingRight)
             {
-                shootDirection = projectile.transform.right;
-                
                 if(model.transform.localScale.x < 0)
                 {
                     model.transform.localScale = new Vector3(model.transform.localScale.x * -1, model.transform.localScale.y, model.transform.localScale.z);
@@ -57,8 +51,6 @@ public class PlayerWeaponControll : MonoBehaviour
             }
             else
             {
-                shootDirection = -projectile.transform.right;
-
                 if (model.transform.localScale.x > 0)
                 {
                     model.transform.localScale = new Vector3(model.transform.localScale.x * -1, model.transform.localScale.y, model.transform.localScale.z);
@@ -69,11 +61,11 @@ public class PlayerWeaponControll : MonoBehaviour
 
     public void StopShoot()
     {
-        shooting = false;
+
     }
 
-    public WeaponData GetWeaponData()
+    public ProjectileControllData GetProjectileControllData()
     {
-        return wData;
+        return data;
     }
 }

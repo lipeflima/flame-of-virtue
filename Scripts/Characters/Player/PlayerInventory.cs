@@ -3,14 +3,12 @@ using TMPro;
 using System.Collections.Generic;
 public class PlayerInventory : MonoBehaviour
 {
-    public bool hasGoldKey = false;
-    public bool hasSilverKey = false;
-    public bool hasRustedKey = false;
-    public bool hasBossKey = false;
     public float currentGold;
     public TMP_Text goldText;
+    private List<GemSO> collectedGems = new List<GemSO>();
+    private List<GemFragment> collectedGemFragments = new List<GemFragment>();
 
-    [SerializeField] private List<string> itens = new List<string>();
+    private List<string> itens = new List<string>();
     
     public void AddGold(float amount)
     {
@@ -29,23 +27,23 @@ public class PlayerInventory : MonoBehaviour
         return itens.Contains(itemName);
     }
 
-    public bool HasFourElements()
-    {
-        // Lista dos quatro elementos obrigatórios
-        string[] requiredItems = { "Heart", "Dove", "Lamb", "Water" };
-
-        // Verifica se todos os itens obrigatórios estão contidos na lista 'itens'
-        foreach (string item in requiredItems)
-        {
-            if (!itens.Contains(item))
-                return false; // Se faltar qualquer um, retorna falso
-        }
-
-        return true; // Todos os itens estão presentes
-    }
-
     public List<string> GetItens()
     {
         return itens;
+    }
+
+    public void AddGem(GemSO gem)
+    {
+        collectedGems.Add(gem);
+    }
+
+    public void AddGemFragment(GemFragment gem)
+    {
+        collectedGemFragments.Add(gem);
+    }
+
+    public List<GemSO> GetCollectedGems()
+    {
+        return collectedGems;
     }
 }

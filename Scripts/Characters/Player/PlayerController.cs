@@ -11,13 +11,13 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     public PlayerStates playerStates;
     public static PlayerController Instance;
-    private PlayerWeaponControll weaponControll;
+    private PlayeProjectileControll projectileControll;
     private PlayerSword sword;
     private string currentAnimState = "";
     public bool isFacingRight = true;
     public bool primaryShoot = false, specialAttackInput = false, interactInput = false, dashInput = false;
     public bool isTeleporting = false;
-    public Transform weapon, turret;
+    public Transform turret;
     public ComboSystem comboSystem { get; private set; }
     public WeaponInUse weaponInUSe;
     // Knockback e dano temporizado
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     public enum WeaponInUse
     {
         Sword,
-        ProjectileWeapon,
+        Projectile,
         Shield
     }
 
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         anim = model.GetComponent<Animator>();
         energySystem = GetComponent<EnergySystem>();
         playerStates = PlayerStates.Idle;
-        weaponControll = GetComponent<PlayerWeaponControll>();
+        projectileControll = GetComponent<PlayeProjectileControll>();
         sword = GetComponent<PlayerSword>();
         cam = Camera.main;
         comboSystem = GetComponent<ComboSystem>();
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
             if (specialAttackInput && comboSystem.GetSpecialStatus())
             {
-                weaponControll.ShootSpecial();
+                projectileControll.ShootSpecial();
             }
 
             if(dashInput)
@@ -151,11 +151,11 @@ public class PlayerController : MonoBehaviour
     {
         switch (weaponInUSe)
         {
-            case WeaponInUse.ProjectileWeapon:
+            case WeaponInUse.Projectile:
                 if (primaryShoot)
-                    weaponControll.Shoot();
+                    projectileControll.Shoot();
                 else
-                    weaponControll.StopShoot();
+                    projectileControll.StopShoot();
                 break;
 
             case WeaponInUse.Sword:
@@ -206,12 +206,6 @@ public class PlayerController : MonoBehaviour
 
     private void SetMovement()
     {
-        // Vira o personagem conforme a direção
-        //if (_playerDirection.x > 0 && !isFacingRight)
-            //Flip();
-        //else if (_playerDirection.x < 0 && isFacingRight)
-            //Flip();
-
         _playerRigidbody2D.MovePosition(_playerRigidbody2D.position + _playerSpeed * Time.fixedDeltaTime * _playerDirection.normalized);
     }
 

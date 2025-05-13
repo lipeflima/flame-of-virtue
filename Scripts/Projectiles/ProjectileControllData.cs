@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "newWeaponData", menuName = "Data/Weapon Data/Base Data")]
+[CreateAssetMenu(fileName = "newProjectileControllData", menuName = "Data/ProjectileControllData/Base Data")]
 
-public class WeaponData : ScriptableObject
+public class ProjectileControllData : ScriptableObject
 {
     public float fireRate = 1;
     public float projectilesToSpawn = 1;
@@ -16,13 +13,6 @@ public class WeaponData : ScriptableObject
     public GameObject projectile;
     public GameObject shootSoundPrefab;
     public GameObject special;
-
-    public enum ShootType
-    {
-        Raycast,
-        Instantiation,
-        Pooling
-    }
 
     [Header("Modificadores dinâmicos")]
     public float fireRateMultiplier = 1f;
