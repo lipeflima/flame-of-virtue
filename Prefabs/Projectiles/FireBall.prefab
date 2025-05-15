@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4139048382694081335}
   - component: {fileID: 251148053655010019}
   m_Layer: 6
-  m_Name: BigProjectile
+  m_Name: FireBall
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,16 +72,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 44034519699553260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009979d72378a7748a939e3f6072d88a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fff930ed5aa8594ea65e53c323a932d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  lifeTime: 10
+  speed: 10
+  lifetime: 1
   damage: 10
-  colidiu: 0
-  canMove: 1
-  destroy: 1
-  hitEffect: {fileID: 0}
+  explosionEffect: {fileID: 100010, guid: 87698b9d467306440a17655d9c528f3a, type: 3}
 --- !u!61 &251148053655010019
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -111,7 +108,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -199,7 +196,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1608814823
-  m_SortingLayer: 0
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 42835636, guid: d683d442a061724468c4779bab91aebd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -1,16 +1,13 @@
-using UnityEngine;
-
-[CreateAssetMenu(fileName = "newProjectileData", menuName = "Data/Projectile/Projectile Data")]
-
-public class ProjectileData : ScriptableObject
+[System.Serializable]
+public class MagicStats
 {
-    public float speed = 1f;
+    public enum MagicType { SoulFire, SpecialFire, ExplosiveFire, AuraFire }
+    public enum MagicStat { Speed, Damage, AttackRate, CoolDown, Lifetime }
+    public float speed = 8f;
     public float damage = 3f;
     public float attackRate = 1f;
     public float coolDown = 1f;
-    public float lifetime = 1f;
-
-    [Header("Modificadores dinâmicos")]
+    public float lifetime = 3f;
     public float speedMultiplier = 1f;
     public float attackRateMultiplier = 1f;
     public float coolDownMultiplier = 1f;
@@ -22,6 +19,13 @@ public class ProjectileData : ScriptableObject
     public float EffectiveSpeed => speed * speedMultiplier;
     public float EffectiveCooldown => coolDown * coolDownMultiplier;
     public float EffectiveLifetime => lifetime * lifetimeMultiplier;
+    public MagicStats() { }
+    public MagicStats(MagicStats other)
+    {
+        damage = other.damage;
+        attackRate = other.attackRate;
+        speed = other.speed;
+        lifetime = other.lifetime;
+        coolDown = other.coolDown;
+    }
 }
-
-public enum ProjectileStat { Speed, Damage, AttackRate, CoolDown, Lifetime }

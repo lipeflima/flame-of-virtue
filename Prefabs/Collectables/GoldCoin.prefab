@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888e8e1dc1c95fc499e8076198ff2b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 2
   itemName: Gold
   amount: 2
   moveSpeed: 16

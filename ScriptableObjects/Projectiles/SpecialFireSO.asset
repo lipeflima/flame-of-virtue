@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 214a12d413c092144b961372fe78c963, type: 3}
-  m_Name: FlameProjectileData
+  m_Name: SpecialFireSO
   m_EditorClassIdentifier: 
-  speed: 15
-  damage: 3
-  attackRate: 1
-  coolDown: 0
-  lifetime: 0.4
-  speedMultiplier: 1
-  attackRateMultiplier: 1
-  coolDownMultiplier: 1
-  lifetimeMultiplier: 1
-  damageMultiplier: 1
+  baseStats:
+    speed: 10
+    damage: 10
+    attackRate: 1
+    coolDown: 1
+    lifetime: 3
+    speedMultiplier: 1
+    attackRateMultiplier: 1
+    coolDownMultiplier: 1
+    lifetimeMultiplier: 1
+    damageMultiplier: 1
+  magicType: 1

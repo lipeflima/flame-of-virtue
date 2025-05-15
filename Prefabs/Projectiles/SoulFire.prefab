@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1840759516029834413}
   - component: {fileID: 251148053655010019}
   m_Layer: 6
-  m_Name: FireProjectile
+  m_Name: SoulFire
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e547afedf675f446b470db1e42e2ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pData: {fileID: 11400000, guid: 2d212cc80777d05458be94c79738ea69, type: 2}
+  data: {fileID: 11400000, guid: 2d212cc80777d05458be94c79738ea69, type: 2}
   colidiu: 0
   destroy: 1
   hitEffect: {fileID: 2058229067824278280, guid: 1da3eabb7362f424b99e1c9fca60abd2, type: 3}

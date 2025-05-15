@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     public PlayerStates playerStates;
     public static PlayerController Instance;
-    private PlayeProjectileControll projectileControll;
+    private PlayerMagicControll magicControll;
     private PlayerSword sword;
     private string currentAnimState = "";
     public bool isFacingRight = true;
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         anim = model.GetComponent<Animator>();
         energySystem = GetComponent<EnergySystem>();
         playerStates = PlayerStates.Idle;
-        projectileControll = GetComponent<PlayeProjectileControll>();
+        magicControll = GetComponent<PlayerMagicControll>();
         sword = GetComponent<PlayerSword>();
         cam = Camera.main;
         comboSystem = GetComponent<ComboSystem>();
@@ -132,18 +132,16 @@ public class PlayerController : MonoBehaviour
         if (energySystem.GetLifeStatus())
         {
             CheckWeaponIsUse();
-
-            if (specialAttackInput && comboSystem.GetSpecialStatus())
+            
+            if (specialAttackInput)
             {
-                projectileControll.ShootSpecial();
+                magicControll.ShootSpecialFire();
             }
 
             if(dashInput)
             {
                 TryDash();
             }
-
-            //SetRotation();
         }
     }
 
@@ -153,9 +151,7 @@ public class PlayerController : MonoBehaviour
         {
             case WeaponInUse.Projectile:
                 if (primaryShoot)
-                    projectileControll.Shoot();
-                else
-                    projectileControll.StopShoot();
+                    magicControll.ShootSoulFire();
                 break;
 
             case WeaponInUse.Sword:

@@ -1,8 +1,8 @@
-using static ProjectileControllData;
+using static MagicStats;
 
 [System.Serializable]
 public class GemEffect
 {
-    public ProjectileStat statAffected;
+    public MagicStat statAffected;
     public float valueModifier; // + ou -
 }

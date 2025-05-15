@@ -1,10 +1,10 @@
 using UnityEngine;
+using static MagicStats;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class FlameProjectile : MonoBehaviour
+public class SoulFire : MonoBehaviour
 {
-    [SerializeField] private ProjectileData pData;
-    public bool colidiu = false;
+    private bool colidiu = false;
     public bool destroy;
     public GameObject hitEffect;
     [SerializeField] private float turnSpeed = 200f;
@@ -17,7 +17,7 @@ public class FlameProjectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        timer = pData.EffectiveLifetime;
+        timer = MagicStatApplier.Instance.currentStatsPerMagic[MagicType.SoulFire].EffectiveLifetime;
         Vector2 randomDir = Random.insideUnitCircle.normalized;
         currentDirection = randomDir;
     }
@@ -41,7 +41,7 @@ public class FlameProjectile : MonoBehaviour
 
         Vector2 desiredDirection = (mouseWorldPos - rb.position).normalized;
         currentDirection = Vector2.Lerp(currentDirection, desiredDirection, turnSpeed * Time.fixedDeltaTime).normalized;
-        rb.MovePosition(rb.position + currentDirection * pData.EffectiveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + currentDirection * MagicStatApplier.Instance.currentStatsPerMagic[MagicType.SoulFire].EffectiveSpeed * Time.fixedDeltaTime);
     }
     
     void OnTriggerEnter2D(Collider2D collision)
@@ -50,7 +50,7 @@ public class FlameProjectile : MonoBehaviour
         {
             colidiu = true;
             EnemyHP enemy = collision.gameObject.GetComponent<EnemyHP>();
-            enemy.TakeDamage(pData.EffectiveDamage);
+            enemy.TakeDamage(MagicStatApplier.Instance.currentStatsPerMagic[MagicType.SoulFire].EffectiveDamage);
             DestroyProjectile();
         }
 
@@ -58,7 +58,7 @@ public class FlameProjectile : MonoBehaviour
         {
             if(collision.gameObject.GetComponent<DamageableObject>() != null)
             {
-                collision.gameObject.GetComponent<DamageableObject>().SetDamage(pData.EffectiveDamage);
+                collision.gameObject.GetComponent<DamageableObject>().SetDamage(MagicStatApplier.Instance.currentStatsPerMagic[MagicType.SoulFire].EffectiveDamage);
             }
 
             DestroyProjectile();

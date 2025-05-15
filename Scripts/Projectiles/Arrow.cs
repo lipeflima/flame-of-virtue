@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SimpleProjectile : MonoBehaviour
+public class Arrow : MonoBehaviour
 {
     public float speed = 8f;
     public float lifeTime = 5f;

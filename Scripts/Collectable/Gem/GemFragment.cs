@@ -1,22 +1,23 @@
 using UnityEngine;
+using static MagicStats;
 
 public class GemFragment
 {
     public GemSO gemType;
-    public ProjectileStat statAffected;
-    public float valueModifier;
+    public MagicStat statAffected;
+    public int valueModifier;
 
     public GemFragment(GemSO gem, int playerLevel)
     {
         gemType = gem;
         statAffected = GetRandomStat();
         float baseMultiplier = 1f + (playerLevel * 0.1f);
-        valueModifier = Random.Range(2f, 5f) * baseMultiplier;
+        valueModifier = (int)(Random.Range(2f, 5f) * baseMultiplier);
     }
 
-    private ProjectileStat GetRandomStat()
+    private MagicStat GetRandomStat()
     {
-        ProjectileStat[] stats = (ProjectileStat[])System.Enum.GetValues(typeof(ProjectileStat));
+        MagicStat[] stats = (MagicStat[])System.Enum.GetValues(typeof(MagicStat));
         return stats[Random.Range(0, stats.Length)];
     }
 

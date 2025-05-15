@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour
     public float currentGold;
     public TMP_Text goldText;
     private List<GemSO> collectedGems = new List<GemSO>();
+    private List<EquippedGem> equipedGems = new List<EquippedGem>();
     private List<GemFragment> collectedGemFragments = new List<GemFragment>();
 
     private List<string> itens = new List<string>();

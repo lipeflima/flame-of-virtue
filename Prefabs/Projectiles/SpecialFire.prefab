@@ -42,8 +42,9 @@ GameObject:
   - component: {fileID: 4057574105212237049}
   - component: {fileID: 5400307849123082386}
   - component: {fileID: 1723877743752278313}
+  - component: {fileID: 1850187606504252764}
   m_Layer: 0
-  m_Name: SpecialAttack
+  m_Name: SpecialFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,12 +76,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8192606338275051137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 223a5fd5a217b204b93b3af0813a344e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fff930ed5aa8594ea65e53c323a932d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilesToSpawn: 4
-  projectile: {fileID: 44034519699553260, guid: 3e4f334b0f3e5e044a4615e14be42b18, type: 3}
-  spawn: {fileID: 8326425676807063868}
+  speed: 10
+  lifetime: 4
+  explosionEffect: {fileID: 1582275357731197809, guid: d5b60c50b8e54bf40b3fb68bcc380363, type: 3}
+  damage: 10
 --- !u!114 &1723877743752278313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +97,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 5
   hide: 0
+--- !u!61 &1850187606504252764
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192606338275051137}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &3126728316193343600
 PrefabInstance:
   m_ObjectHideFlags: 0
