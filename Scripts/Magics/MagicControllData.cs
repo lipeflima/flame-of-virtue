@@ -10,7 +10,7 @@ public class MagicControllData : ScriptableObject
     public float recoilOffsetY = 1;
     public float recoilFactor = 50;
     public Vector3 spawnPoint;
-    public GameObject SoulFireProjectile;
+    public GameObject soulFireProjectile;
     public GameObject specialFireProjectile;
 
     public GameObject shootSoundPrefab;

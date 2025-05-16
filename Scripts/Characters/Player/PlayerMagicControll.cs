@@ -23,7 +23,7 @@ public class PlayerMagicControll : MonoBehaviour
 
             for (int i = 0; i < data.projectilesToSpawn; i++)
             {
-                GameObject projectile = Instantiate(data.SoulFireProjectile, spawn.transform.position + data.spawnPoint + new Vector3(Random.Range(-data.recoilOffsetX, data.recoilOffsetX), Random.Range(-data.recoilOffsetX, data.recoilOffsetX), 0), spawn.rotation * Quaternion.Euler(0, 0, Random.Range(-data.recoilOffsetY, data.recoilOffsetY)));
+                GameObject projectile = Instantiate(data.soulFireProjectile, spawn.transform.position + data.spawnPoint + new Vector3(Random.Range(-data.recoilOffsetX, data.recoilOffsetX), Random.Range(-data.recoilOffsetX, data.recoilOffsetX), 0), spawn.rotation * Quaternion.Euler(0, 0, Random.Range(-data.recoilOffsetY, data.recoilOffsetY)));
 
                 model = projectile.transform;
                 Instantiate(data.shootSoundPrefab);

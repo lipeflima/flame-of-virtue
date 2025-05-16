@@ -18,7 +18,7 @@ MonoBehaviour:
   recoilOffsetY: 0
   recoilFactor: 50
   spawnPoint: {x: 0, y: 0, z: 0}
-  SoulFireProjectile: {fileID: 44034519699553260, guid: 20220cd2fe1da7247b06ff7c01666dfc, type: 3}
+  soulFireProjectile: {fileID: 44034519699553260, guid: 20220cd2fe1da7247b06ff7c01666dfc, type: 3}
   specialFireProjectile: {fileID: 44034519699553260, guid: 3e4f334b0f3e5e044a4615e14be42b18, type: 3}
   shootSoundPrefab: {fileID: 5783096457510702836, guid: c23d5f3f318394845932db57235e048c, type: 3}
   fireRateMultiplier: 1
