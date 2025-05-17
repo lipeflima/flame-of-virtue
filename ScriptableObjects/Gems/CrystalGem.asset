@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abbd85631e59b8948934cb4714840348, type: 3}
   m_Name: CrystalGem
   m_EditorClassIdentifier: 
+  gemType: 0
   gemName: Crystal Gem
-  icon: {fileID: 21300000, guid: a4f81772886e85747804d6c3b7b976dd, type: 3}
+  icon: {fileID: 21300000, guid: 2c9e1e10abb92f34f9a160b63dbe8ff1, type: 3}
   description: "Bela, fr\xE1gil e incrivelmente perigosa."
   effects: []
   enablesEffect: 1
-  enabledEffectName: Fragmentation

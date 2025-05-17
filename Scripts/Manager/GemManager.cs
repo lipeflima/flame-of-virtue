@@ -12,18 +12,38 @@ public class GemManager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
     }
+    
+    public void EquipGem(MagicType magicType, GemSO gemSO)
+    {
+        if (!equippedGemsPerMagic.ContainsKey(magicType))
+        {
+            equippedGemsPerMagic[magicType] = new List<EquippedGem>();
+        }
+
+        // Cria nova instância de EquippedGem
+        EquippedGem equipped = new EquippedGem
+        {
+            gemData = gemSO,
+            socketedFragments = new List<GemFragment>()
+        };
+
+        equippedGemsPerMagic[magicType].Add(equipped);
+
+        // Atualiza UI (caso esteja em uso)
+        FindObjectOfType<MagicUpgradeUI>()?.UpdateTabForType(magicType); // método auxiliar opcional
+    }
 
     public void UpdateAllMagicStats()
     {
         Dictionary<MagicType, List<GemEffect>> allEffects = new();
 
-        foreach (var kvp in equippedGemsPerMagic)
+        foreach (var equippedGem in equippedGemsPerMagic)
         {
-            var magic = kvp.Key;
-            var gems = kvp.Value;
+            var magic = equippedGem.Key;
+            var gems = equippedGem.Value;
 
             List<GemEffect> effects = new();
-            
+
             foreach (var gem in gems)
                 effects.AddRange(gem.GetTotalEffects());
 

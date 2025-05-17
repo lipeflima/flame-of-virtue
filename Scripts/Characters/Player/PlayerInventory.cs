@@ -36,6 +36,7 @@ public class PlayerInventory : MonoBehaviour
     public void AddGem(GemSO gem)
     {
         collectedGems.Add(gem);
+        FindObjectOfType<GemInventoryUI>().RefreshUI();
     }
 
     public void AddGemFragment(GemFragment gem)

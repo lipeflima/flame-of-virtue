@@ -15,6 +15,7 @@ public class MagicUpgradeUI : MonoBehaviour
         // public Image icon;
         public TMP_Text inputKeyText;
         public List<StatBar> statBars;
+        public List<GemSlotUI> gemSlots;
     }
 
     [System.Serializable]
@@ -31,6 +32,9 @@ public class MagicUpgradeUI : MonoBehaviour
     [Header("Fonte de Stats")]
     public MagicStatApplier statSource;
 
+    [Header("Gerenciador de Gemas")]
+    public GemManager gemManager;
+
     void Start()
     {
         foreach (var tab in magicTabs)
@@ -42,7 +46,7 @@ public class MagicUpgradeUI : MonoBehaviour
         ShowTab(magicTabs[0]);
     }
 
-    void ShowTab(MagicTab selected)
+    public void ShowTab(MagicTab selected)
     {
         foreach (var tab in magicTabs)
         {
@@ -51,6 +55,13 @@ public class MagicUpgradeUI : MonoBehaviour
         }
 
         UpdateStatBars(selected);
+        UpdateGemSlots(selected);
+    }
+
+    public void UpdateTabForType(MagicType selectedType)
+    {
+        UpdateStatBars(GetMagicTabByType(selectedType));
+        UpdateGemSlots(GetMagicTabByType(selectedType));
     }
 
     void UpdateStatBars(MagicTab tab)
@@ -66,6 +77,25 @@ public class MagicUpgradeUI : MonoBehaviour
         }
     }
 
+    void UpdateGemSlots(MagicTab tab)
+    {
+        if (!gemManager.equippedGemsPerMagic.ContainsKey(tab.magicType)) return;
+        List<EquippedGem> equipped = gemManager.equippedGemsPerMagic[tab.magicType];
+
+        for (int i = 0; i < tab.gemSlots.Count; i++)
+        {
+            if (i < equipped.Count)
+            {
+                tab.gemSlots[i].SetGem(equipped[i].gemData);
+            }
+            else
+            {
+                tab.gemSlots[i].ClearSlot();
+            }
+        }
+    }
+
+
     int GetStatValue(MagicStats stats, MagicStat type)
     {
         return type switch
@@ -77,5 +107,10 @@ public class MagicUpgradeUI : MonoBehaviour
             MagicStat.CoolDown => (int)stats.coolDown,
             _ => 0
         };
+    }
+
+    public MagicTab GetMagicTabByType(MagicType type)
+    {
+        return magicTabs.Find((tab) => tab.magicType == type);
     }
 }
