@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class GemSlotUI : MonoBehaviour
+public class GemSlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public Image icon;
-    // public GameObject emptyIcon;
     private GemSO currentGem;
 
     public void SetGem(GemSO gem)
@@ -14,11 +14,36 @@ public class GemSlotUI : MonoBehaviour
         icon.enabled = true;
     }
 
+    public bool HasGem()
+    {
+        return currentGem != null;
+    }
+
     public void ClearSlot()
     {
         currentGem = null;
         icon.enabled = false;
     }
 
-    // Suporte a drag-and-drop pode ser adicionado aqui
+    public void Hide()
+    {
+        icon.enabled = false;
+    }
+
+    public void Show(GemSO gem)
+    {
+        SetGem(gem);
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (currentGem != null && eventData.button == PointerEventData.InputButton.Left)
+        {
+            GemDragManager.Instance.StartDrag(currentGem, this);
+        }
+    }
+
+    public void OnDrag(PointerEventData eventData) { }
+
+    public void OnEndDrag(PointerEventData eventData) { }
 }

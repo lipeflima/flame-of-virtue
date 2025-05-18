@@ -33,6 +33,21 @@ public class GemManager : MonoBehaviour
         FindObjectOfType<MagicUpgradeUI>()?.UpdateTabForType(magicType); // método auxiliar opcional
     }
 
+    public List<EquippedGem> GetEquippedGems(MagicType slotType)
+    {
+        if (equippedGemsPerMagic.TryGetValue(slotType, out var gems))
+        {
+            return gems;
+        }
+
+        return new List<EquippedGem>(); // retorna lista vazia
+    }
+
+    public bool IsGemTypeAlreadyEquipped(MagicType slotType, GemSO gem)
+    {
+        return GetEquippedGems(slotType).Exists(g => g.gemData == gem);
+    }
+
     public void UpdateAllMagicStats()
     {
         Dictionary<MagicType, List<GemEffect>> allEffects = new();
