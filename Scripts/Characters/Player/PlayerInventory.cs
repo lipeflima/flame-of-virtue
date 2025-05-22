@@ -5,7 +5,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public float currentGold;
     public TMP_Text goldText;
-    private List<GemSO> collectedGems = new List<GemSO>();
+    public List<GemSO> collectedGems = new List<GemSO>();
     private List<EquippedGem> equipedGems = new List<EquippedGem>();
     private List<GemFragment> collectedGemFragments = new List<GemFragment>();
 
@@ -36,6 +36,7 @@ public class PlayerInventory : MonoBehaviour
     public void AddGem(GemSO gem)
     {
         collectedGems.Add(gem);
+        FindObjectOfType<GemInventoryUI>().RefreshUI();
     }
 
     public void AddGemFragment(GemFragment gem)
